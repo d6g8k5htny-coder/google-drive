@@ -1,43 +1,11 @@
-# google-drive
+# Google Drive — selective, source-bound replicas
 
-Public **Drive replica shell**. Holds a git-facing mirror of selected Google Drive material for the Dylan Roy research stack. It is a **replica**, not the source of truth.
+This repository contains deliberately selected public replicas of research outputs. It is not an automatic backup of the entire Drive and not a replacement for source records or mathematical review.
 
-| Repo | Role |
-|------|------|
-| [`d6g8k5htny-coder/main`](https://github.com/d6g8k5htny-coder/main) | Research program (q0 / SIDE24). Authority and status live there. |
-| **this repo** | Empty-by-design Drive replica container. No scientific authority. |
-| [`d6g8k5htny-coder/trial`](https://github.com/d6g8k5htny-coder/trial) | Owner sandbox / agent landing pad. |
+The first live replica is [SIDE24 coefficient output](replicas/side24-coefficient-v1/ENCLOSURE.json). [SOURCE.json](replicas/side24-coefficient-v1/SOURCE.json) records its exact Drive source ID, byte count, SHA256, public-with-link visibility observation and source proof. The original new output was uploaded to Drive before replication; no existing Drive object was overwritten and no sharing setting was changed.
 
-## Purpose
+The calculation itself belongs to `Math-`. Its parent lifetime theorem in main issue63 remains an author-side candidate, even when these bytes verify. Source review, reproduction and independent acceptance are separate facts.
 
-- Mirror Drive trees into git when the owner asks, with clear quarantine vs live lanes.
-- Keep replica hygiene visible (what was copied, what stays vaulted).
-- Never promote mirrored files into research status on `main`.
+The `meta-framework` registry and `query-` CLI make this replica locatable and byte-verifiable alongside the original calculation. Private Drive sources, vaults, private `sandbox` artifacts, credentials and unspecified files are not part of this public mirror. Before any additional replica, inspect that exact source and its visibility, establish authority to publish it, and retain its immutable identity and scope. A stale but hash-correct replica is still stale.
 
-## What belongs here
-
-- Replica trees, manifests, and hygiene notes for Drive → git.
-- Pointers to vault / DO_NOT_OPEN policy (quarantine ≠ SoT).
-
-## What does not belong here
-
-- Claim status flips, prize registers, or OBL discharge language.
-- Replacing `main` as the research tip.
-- Diluting [`trial`](https://github.com/d6g8k5htny-coder/trial)'s README or role.
-
-## Non-claims
-
-- `lemma_closed`, `prizes_solved`, `discharges_OBL_H5_JETMOD`, and `certified_C_H` stay **unchanged / false** unless `main` records otherwise under its own predicates.
-- Eng ≠ discharge. OBL stays **OPEN**.
-- **NEVER-MAIN**: live research tip work stays on the hardening branch of `main`, not on this shell's default tip.
-
-## Related shells
-
-| Shell | Note |
-|-------|------|
-| `meta-framework` | Meta / framework scaffolding |
-| `query-` | Query / ask surface |
-| `governance-` | Governance / protocol surface |
-| `Math-` | Math structure/purpose only |
-| `trial` | Strong README — do not dilute |
-| `sandbox` | Private — MCP-only; no public clone expected |
+This targeted, useful replica supersedes the earlier empty-by-design shell. Main campaign61 remains the collaborative research handoff; this repository does not duplicate scientific-status registers.
