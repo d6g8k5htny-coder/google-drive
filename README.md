@@ -2,7 +2,7 @@
 
 This repository contains deliberately selected public replicas of research outputs. It is not an automatic backup of the entire Drive and not a replacement for source records or mathematical review.
 
-## Live replicas (11)
+## Live replicas (12)
 
 | Replica | Drive id | Bytes | Notes |
 |---|---|---:|---|
@@ -15,12 +15,13 @@ This repository contains deliberately selected public replicas of research outpu
 | [RN count interface](replicas/rn-count-interface-v1/RN_COUNT_INTERFACE.md) | `1n-AmY7H1UPf3_MK5wM5Wn62EeNmDzGvM` | 8938 | Math- / #67 |
 | [P15 realized covers](replicas/p15-realized-covers-v1/P15_REALIZED_COVERS.md) | `1Fd0o_UzCxpWki08b04e2SeQH-a2BlRtk` | 11467 | Math- / #67 |
 | [P15 price boundary](replicas/p15-price-boundary-v1/P15_PRICE_BOUNDARY.md) | `1i9eByN8jv97CYhZ4I0aEUr0XDmfCPrfi` | 2266 | Math- / #67 |
+| [P15-B original](replicas/p15-b-original-v1/PROOF.md) | `19D-eHQAIXMGGy2ThZUfZ0GGjIKWm5C2j` | 6286 | Drive-primary / P15-B |
 | [RN fixed-remote window](replicas/rn-fixed-remote-window-v1/PROOF.md) | `1Un31SxLZhSA2hE4YOVWkUVForp2t504n` | 18355 | Math- / #76 |
 | [P15 full-price](replicas/p15-full-price-v1/PROOF.md) | `1GsN4BU2pJ6lU9lbfTUF6vC1TBlDxEkDw` | 11352 | Math- / #74 |
 
 Machine index: [`replicas/INDEX.json`](replicas/INDEX.json); intentionally skipped Drive ids: [`replicas/EXCLUDED.json`](replicas/EXCLUDED.json) (suggested catalog keys; peer map to [meta-framework#6](https://github.com/d6g8k5htny-coder/meta-framework/pull/6)).
 
-**Peer split:** [meta-framework#6](https://github.com/d6g8k5htny-coder/meta-framework/pull/6) hosts interim SHA-matched copies of three Drive-primary proofs (cap / matrix-lifetime / palette) plus nonauthor notes, because that env can write the catalog. This repository remains the selective Drive-custody home. Overlapping proof bytes were re-checked identical (2026-09-25). Capsules/ZIPs/receipts stay excluded.
+**Peer split:** [meta-framework#6](https://github.com/d6g8k5htny-coder/meta-framework/pull/6) hosts interim SHA-matched copies of Drive-primary proofs (cap / matrix-lifetime / palette / P15-B) plus nonauthor notes, because that env can write the catalog. This repository remains the selective Drive-custody home. Overlapping proof bytes were re-checked identical (2026-09-25). Capsules/ZIPs/receipts stay excluded (`EXCLUDED.json`).
 
 Each replica directory has `SOURCE.json` (Drive id, bytes, SHA256, visibility observation, mathematical identity when known). Drive-primary means the exact proof file is not on the Math- default branch.
 

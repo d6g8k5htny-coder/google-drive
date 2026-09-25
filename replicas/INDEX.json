@@ -6,12 +6,13 @@
   "peer_coordination": {
     "meta_framework_pr": "https://github.com/d6g8k5htny-coder/meta-framework/pull/6",
     "peer_branch": "cursor/catalog-drive-parents-5cb8",
-    "role_split": "google-drive holds selective Drive custody; meta-framework PR6 hosts interim SHA-matched copies of three Drive-primary proofs plus nonauthor notes for catalog routing from a writable repo",
-    "byte_match_verified_utc": "2026-09-25T17:30Z",
+    "role_split": "google-drive holds selective Drive custody; meta-framework PR6 hosts interim SHA-matched copies plus nonauthor notes for catalog routing from a writable repo",
+    "byte_match_verified_utc": "2026-09-25T17:52Z",
     "overlap": [
       "marked-cylinder-cap (Drive 1BnPods\u2026)",
       "matrix-cap-lifetime (Drive 1foDgi\u2026)",
-      "consecutive-palette (Drive 1jvV6k\u2026)"
+      "consecutive-palette (Drive 1jvV6k\u2026)",
+      "p15-b-original (Drive 19D-eHQ\u2026)"
     ],
     "google_drive_only_awaiting_catalog": [
       "lifetime-remainder-drive-replica",
@@ -111,6 +112,29 @@
       "peer_meta_framework_pr6": {
         "peer_folder": "matrix-cap-lifetime-v1",
         "peer_catalog_key": "matrix-cap-lifetime",
+        "byte_match_verified": true
+      }
+    },
+    {
+      "folder": "p15-b-original-v1",
+      "replica_path": "replicas/p15-b-original-v1/PROOF.md",
+      "source_drive_id": "19D-eHQAIXMGGy2ThZUfZ0GGjIKWm5C2j",
+      "bytes": 6286,
+      "sha256": "9b18b6e9abc90d18deef06ab12e3aa7794dad40e1618d99daa88e369c300e8c3",
+      "mathematical_source": {
+        "bytes": 6286,
+        "carrier": "drive-primary",
+        "key": "p15-b-original",
+        "object": "P15-B_PALETTE_SEPARATED_LOCALIZATION",
+        "scope": "SHA-matched public replica of P15-B palette-separated localization; not prize acceptance; peer catalog key p15-b-original on meta-framework#6",
+        "sha256": "9b18b6e9abc90d18deef06ab12e3aa7794dad40e1618d99daa88e369c300e8c3",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "p15-b-original-drive-replica",
+      "catalogued_in_meta_framework_main": false,
+      "peer_meta_framework_pr6": {
+        "peer_folder": "p15-b-original-v1",
+        "peer_catalog_key": "p15-b-original",
         "byte_match_verified": true
       }
     },
