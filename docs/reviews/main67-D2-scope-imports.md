@@ -20,8 +20,8 @@ This document is the qualified fallback: D2 #67 **scope/import** review only.
 | Note | Object | Drive id | Bytes | SHA-256 | Local replica | Math- path @ `9b5fb7fa…` |
 |---|---|---|---:|---|---|---|
 | A | `LIFETIME-BOUNDED-REMAINDER-20260924-v1` | `1xWGvtYUbG8FGVnGi_0-nX1asCOtqQLi7` | 17734 | `380b7d0abdb0fe2de5a6564565af9560d3f1b1ce22fd5538927db0c52f4f3a4a` | `replicas/lifetime-remainder-v1/` | `frontiers/three_fronts_20260924/LIFETIME_REMAINDER.md` |
-| B | `RN-COUNT-INTERFACE-20260924-v1` | `1n-AmY7H1UPf3_MK5wM5Wn62EeNmDzGvM` | 8938 | `aa993f5217bd70e6d1060402d121ab659f6582a098…` (full in SOURCE.json) | `replicas/rn-count-interface-v1/` | `…/RN_COUNT_INTERFACE.md` |
-| C | `P15-REALIZED-COVERS-20260924-v1` | `1Fd0o_UzCxpWki08b04e2SeQH-a2BlRtk` | 11467 | `c0dbb821fb57…` (full in SOURCE.json) | `replicas/p15-realized-covers-v1/` | `…/P15_REALIZED_COVERS.md` |
+| B | `RN-COUNT-INTERFACE-20260924-v1` | `1n-AmY7H1UPf3_MK5wM5Wn62EeNmDzGvM` | 8938 | `aa993f5217bd70e6d1060402d121ab659f6582a098e29042c67585a345a8e3ab` | `replicas/rn-count-interface-v1/` | `…/RN_COUNT_INTERFACE.md` |
+| C | `P15-REALIZED-COVERS-20260924-v1` | `1Fd0o_UzCxpWki08b04e2SeQH-a2BlRtk` | 11467 | `c0dbb821fb57b685a20cc321e4074456f39a9697f3104afd1f728e4732179bb9` | `replicas/p15-realized-covers-v1/` | `…/P15_REALIZED_COVERS.md` |
 
 Local `scripts/verify_replicas.py` confirms byte/SHA match for all three. **That verification does not review mathematics.**
 
