@@ -112,6 +112,15 @@
       "bytes": 8875,
       "sha256": "4005e65b1ceb63153145776c20a1e9d17bb2a01faf0315a24877acf39901282c",
       "kind": "md"
+    },
+    {
+      "source_drive_id": "1Ae8oQnr6uj2LLrQ42hbXzqEL5juslL32",
+      "reason": "delivery_receipt",
+      "review_surface": "main#76 catalog companion",
+      "note": "Machine catalog/execution companion JSON; not a mathematical proof payload",
+      "bytes": 7225,
+      "sha256": "7cd54728a86a4717bec995b473466ae8fe031690048f78a9859d076fa39b7f7d",
+      "kind": "json"
     }
   ]
 }
