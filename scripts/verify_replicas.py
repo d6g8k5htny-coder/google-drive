@@ -102,6 +102,25 @@ def main() -> int:
             + (" (live match)" if args.live_drive else " (local only)")
         )
 
+
+    index_path = REPLICAS / "INDEX.json"
+    if index_path.is_file():
+        index = json.loads(index_path.read_text(encoding="utf-8"))
+        if index.get("scientific_status_authority") is not False:
+            print("FAIL INDEX.json: scientific_status_authority must be false")
+            return 1
+        indexed = {row.get("folder") for row in index.get("replicas", [])}
+        if indexed != set(checked):
+            print(f"FAIL INDEX.json folders {sorted(indexed)} != verified {sorted(checked)}")
+            return 1
+        for row in index["replicas"]:
+            src = json.loads((REPLICAS / row["folder"] / "SOURCE.json").read_text(encoding="utf-8"))
+            for field in ("bytes", "sha256", "source_drive_id", "replica_path"):
+                if row.get(field) != src.get(field):
+                    print(f"FAIL INDEX.json {row['folder']}.{field} != SOURCE.json")
+                    return 1
+        print(f"PASS INDEX.json consistent with {len(checked)} SOURCE records")
+
     print(
         f"verified={len(checked)} meaning=exact bytes only; "
         "not currentness or theorem acceptance; scientific_effect=NONE"
