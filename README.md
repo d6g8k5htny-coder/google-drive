@@ -30,11 +30,12 @@ For each replica, the original was uploaded to Drive before replication; no exis
 ## Verify
 
 ```bash
-python3 scripts/verify_replicas.py              # local SOURCE vs replica bytes + INDEX consistency
+python3 scripts/verify_replicas.py              # local SOURCE vs replica bytes + INDEX/EXCLUDED consistency
 python3 scripts/verify_replicas.py --live-drive # also re-download each Drive id
+python3 -m unittest scripts.test_verify_replicas -v
 ```
 
-CI runs the local check via [`.github/workflows/verify-replicas.yml`](.github/workflows/verify-replicas.yml).
+CI runs the local check and negative controls via [`.github/workflows/verify-replicas.yml`](.github/workflows/verify-replicas.yml).
 
 A passing check proves exact bytes only. It is not currentness, independence, or theorem acceptance. Scientific effect: **NONE**.
 
