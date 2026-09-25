@@ -103,6 +103,23 @@ def main() -> int:
         )
 
 
+    excluded_path = REPLICAS / "EXCLUDED.json"
+    if excluded_path.is_file():
+        excluded = json.loads(excluded_path.read_text(encoding="utf-8"))
+        if excluded.get("scientific_status_authority") is not False:
+            print("FAIL EXCLUDED.json: scientific_status_authority must be false")
+            return 1
+        selected_ids = set()
+        for folder in checked:
+            src = json.loads((REPLICAS / folder / "SOURCE.json").read_text(encoding="utf-8"))
+            selected_ids.add(src["source_drive_id"])
+        for row in excluded.get("excluded", []):
+            fid = row.get("source_drive_id")
+            if fid in selected_ids:
+                print(f"FAIL EXCLUDED.json lists selected Drive id {fid}")
+                return 1
+        print(f"PASS EXCLUDED.json ({len(excluded.get('excluded', []))} non-selected Drive ids)")
+
     index_path = REPLICAS / "INDEX.json"
     if index_path.is_file():
         index = json.loads(index_path.read_text(encoding="utf-8"))
