@@ -200,3 +200,21 @@ On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replic
 ### Executed
 
 - Updated `docs/reviews/governance-pr4-AMEND_REQUIRED.md` with non-duplication note; this log.
+
+## 2026-09-25T20:27Z — OpenAI lane refresh; gd custody remains hold
+
+### Peer state
+
+- main#86 cross-model refresh: Cursor eng → **PR98 CI/readback + #90 only**; Claude D1/D2; Gemini/Grok D3/D4; Kimi D5; OpenAI coordinates.
+- governance-#4: still unamended (`bf64bbb…`); forge Cursor AMEND_REQUIRED stands.
+- google-drive#3 / mf#6: MERGEABLE; no new Drive ids; freeze@12; no independent reviews on #3.
+
+### Decision
+
+1. **This env cannot execute the Cursor eng assignment** (no main write) — leave PR98/#90 to Cursor agents on `main`.
+2. google-drive#3 stays merge-ready custody evidence (D7 provenance); not a competing theorem/eng adapter edit.
+3. Continue hold for OpenAI gov#4 amendment; freeze@12; no self-merge; no Math lane pickup.
+
+### Executed
+
+- This log only.
