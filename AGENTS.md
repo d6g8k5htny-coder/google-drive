@@ -15,8 +15,9 @@ Selected public Drive replicas with exact source custody. Not an automatic full-
 - Duplicate scientific-status registers here.
 - Publish private `sandbox` material.
 - Ask Dylan for re-approval of autonomy already granted.
-- Race active peer lanes (Math- PR7/9/14 mesoscopic, main PR98/#90 hard gate, unclaimed D1–D4/D6 analytic reviews).
+- Race active peer lanes (Math- PR7/9/14/16/21/22 D5 mesoscopic & transverse candidates; main PR98/#90 hard gate; unclaimed D1–D4/D6 analytic reviews including #76).
 - Self-merge Cursor-authored PRs that still need independent review.
+- Claim Math-/main write work from this google-drive-only environment.
 ## Start here
 
 1. This repository’s [README](README.md) and latest [coordination log](docs/COORDINATION.md)
