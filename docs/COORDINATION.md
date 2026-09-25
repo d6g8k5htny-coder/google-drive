@@ -89,3 +89,23 @@ On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replic
 
 - Draft review stored for gate-clear posting; this log entry.
 - Live local verify still PASS (12 replicas).
+
+## 2026-09-25T18:33Z — timer wake; PR98 verify still in progress
+
+### Peer state
+
+- main#98: one `verify` SUCCESS, one `verify` still **IN_PROGRESS**; draft; gate not cleared.
+- governance-#4: unchanged; no review comments yet.
+- google-drive#3: MERGEABLE/CI green; no independent reviews yet.
+- meta-framework#6: MERGEABLE; no new Drive SOURCE ids.
+- Freeze@12 stands.
+
+### Decision
+
+1. Subscribe to CI on PR98 head branch `cursor/scientific-state-schema-crosswalk-31c5` — on terminal green, post governance-#4 `AMEND_REQUIRED` draft.
+2. No replica / verifier churn this wake.
+3. Do not self-merge google-drive#3.
+
+### Executed
+
+- CI subscription on PR98 branch; this log entry.
