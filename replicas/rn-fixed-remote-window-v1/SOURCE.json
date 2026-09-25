@@ -1,0 +1,20 @@
+{
+  "bytes": 18355,
+  "mathematical_source": {
+    "bytes": 18355,
+    "commit": "191ea7d541a486736ba7bbddfd4eac25a6c4567b",
+    "key": "rn-fixed-remote-window",
+    "path": "frontiers/remote_window_20260924/PROOF.md",
+    "repository": "Math-",
+    "scope": "Author-side actual cubic count on a fixed remote spatial region and shrinking height window; no shrinking-cutoff or 24-jet certificate",
+    "sha256": "a332bae9bdc0106ce17047f7e0409cc3d94eb610a0c7b74ba5ba2d01a1620cb7",
+    "visibility": "public"
+  },
+  "meaning": "one selected public raw-file replica, not complete Drive synchronization or scientific status",
+  "no_private_sources": true,
+  "replica_path": "replicas/rn-fixed-remote-window-v1/PROOF.md",
+  "schema_version": 1,
+  "sha256": "a332bae9bdc0106ce17047f7e0409cc3d94eb610a0c7b74ba5ba2d01a1620cb7",
+  "source_drive_id": "1Un31SxLZhSA2hE4YOVWkUVForp2t504n",
+  "source_visibility_observed": "anyone-with-link reader; no sharing change"
+}
