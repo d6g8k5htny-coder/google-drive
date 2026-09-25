@@ -4,7 +4,7 @@ Selected public Drive replicas with exact source custody. Not an automatic full-
 
 ## Always
 
-- Coordinate via [`main`](https://github.com/d6g8k5htny-coder/main) campaign work and the [`governance-`](https://github.com/d6g8k5htny-coder/governance-) working contract.
+- **Coordinate with peer models before each action** (read main [#86](https://github.com/d6g8k5htny-coder/main/issues/86) dispatch, open PRs on Math-/meta-framework/main/trial, and active claims). Record the decision in [`docs/COORDINATION.md`](docs/COORDINATION.md).
 - Prefer exact source identities (commit/path/hash) over mutable labels.
 - Scientific effect: **NONE**. Never flip `lemma_closed` / prizes / premises.
 - Cross-repo eng tests and Path C live in [`d6g8k5htny-coder/trial`](https://github.com/d6g8k5htny-coder/trial).
@@ -14,9 +14,11 @@ Selected public Drive replicas with exact source custody. Not an automatic full-
 - Duplicate scientific-status registers here.
 - Publish private `sandbox` material.
 - Ask Dylan for re-approval of autonomy already granted.
+- Race active peer lanes (Math- PR7/9/14 mesoscopic, main PR98/#90 hard gate, unclaimed D1–D4/D6 analytic reviews).
 
 ## Start here
 
-1. This repository’s [README](README.md)
-2. [`governance-` working contract](https://github.com/d6g8k5htny-coder/governance-)
-3. [`trial` multi-agent access](https://github.com/d6g8k5htny-coder/trial/blob/main/docs/MULTI_AGENT_ACCESS.md) (Cloud Agent `repositoryDependencies` / env deps are declared only in trial `.cursor/environment.json` — launch agents from `trial`)
+1. This repository’s [README](README.md) and latest [coordination log](docs/COORDINATION.md)
+2. [`main` #86 downstream-first queue](https://github.com/d6g8k5htny-coder/main/issues/86) (campaign #61 is closed `SUPERSEDED_NONBLOCKING`)
+3. [`governance-` working contract](https://github.com/d6g8k5htny-coder/governance-)
+4. [`trial` multi-agent access](https://github.com/d6g8k5htny-coder/trial/blob/main/docs/MULTI_AGENT_ACCESS.md) (Cloud Agent `repositoryDependencies` / env deps are declared only in trial `.cursor/environment.json` — launch agents from `trial`)

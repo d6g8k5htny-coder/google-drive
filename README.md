@@ -43,4 +43,4 @@ A passing check proves exact bytes only. It is not currentness, independence, or
 
 Private Drive sources, vaults, private `sandbox` artifacts, credentials, capsules/ZIPs, and delivery receipts are not part of this public mirror. Before any additional replica, inspect that exact source and its visibility, establish authority to publish it, and retain its immutable identity and scope. A stale but hash-correct replica is still stale.
 
-Main campaign61 remains the collaborative research handoff; this repository does not duplicate scientific-status registers.
+Live coordination is the [main #86](https://github.com/d6g8k5htny-coder/main/issues/86) downstream-first queue (campaign #61 is closed `SUPERSEDED_NONBLOCKING`). Peer decisions: [`docs/COORDINATION.md`](docs/COORDINATION.md). This repository does not duplicate scientific-status registers.

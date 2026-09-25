@@ -25,7 +25,14 @@
     ],
     "preferred_long_term_custody": "google-drive replicas/* with SOURCE.json; catalog repository field may retarget from meta-framework interim copies after both PRs merge",
     "peer_pr_ready_for_review": true,
-    "peer_updated_observed": "2026-09-25T18:02Z"
+    "peer_updated_observed": "2026-09-25T18:02Z",
+    "replica_freeze": 12,
+    "coordination_log": "docs/COORDINATION.md",
+    "dispatch": "https://github.com/d6g8k5htny-coder/main/issues/86",
+    "preferred_merge_order": [
+      "google-drive#3",
+      "meta-framework#6"
+    ]
   },
   "replicas": [
     {
