@@ -143,3 +143,23 @@ On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replic
 ### Executed
 
 - This heartbeat only (peer state change = OpenAI review claim; no google-drive code change required).
+
+## 2026-09-25T19:16Z — timer wake; still holding; new Math review PRs to avoid
+
+### Peer state
+
+- governance-#4: unchanged (1 commit; forge comments 0; digest still `bf64bbb…`).
+- OpenAI review claim on PR98/PR9 still active; new ChatGPT Math drafts **#15/#16/#17** (transition integrity / pin counterexample / D5 pin compatibility) — **avoid racing**.
+- google-drive#3: MERGEABLE; no new independent reviews.
+- meta-framework#6: MERGEABLE; no new Drive SOURCE ids.
+- Local verify: will re-run this wake.
+
+### Decision
+
+1. Continue **hold** for OpenAI gov#4 amendment; do not re-review same digest.
+2. Expand collision avoid list with Math- #15/#16/#17.
+3. Freeze@12; no self-merge #3.
+
+### Executed
+
+- Collision-list update in this log; live verify.
