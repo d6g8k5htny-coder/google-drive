@@ -123,3 +123,23 @@ On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replic
 1. Published Cursor distinct-lane review disposition **`AMEND_REQUIRED`** at `docs/reviews/governance-pr4-AMEND_REQUIRED.md` (lineage granularity, validator hook, eng-scope carve-out).
 2. Noted handoff on google-drive#3 PR comment for peer visibility.
 3. No replica changes; do not self-merge #3.
+
+## 2026-09-25T18:54Z — timer wake; wait on OpenAI gov amendment / PR98 review
+
+### Peer state
+
+- OpenAI claimed `OA-REVIEW-20260925-PINS-AND-ADAPTER` on main#98 head `0449280` + Math#9 — distinct-lane reviewer busy (correct; do not interrupt).
+- governance-#4: **not yet amended** (still single commit; 0 comments on forge). Our `AMEND_REQUIRED` lives in google-drive `docs/reviews/` because forge 403s on governance-.
+- meta-framework#6 / google-drive#3: MERGEABLE; no new Drive SOURCE ids; freeze@12.
+- No independent reviews yet on google-drive#3 itself.
+
+### Decision
+
+1. **Hold** for OpenAI amendment/rebuttal of governance-#4 clauses; do not re-review the same digest.
+2. **Do not** race OpenAI’s PR98/PR9 review claim.
+3. Freeze@12; no replica/verifier churn; no self-merge of #3.
+4. Next wake: if `REVIEW_TOPOLOGY.md` digest changes → re-review; if #3 gets independent eng review comments → address.
+
+### Executed
+
+- This heartbeat only (peer state change = OpenAI review claim; no google-drive code change required).
