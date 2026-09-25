@@ -18,7 +18,9 @@ This repository contains deliberately selected public replicas of research outpu
 | [RN fixed-remote window](replicas/rn-fixed-remote-window-v1/PROOF.md) | `1Un31SxLZhSA2hE4YOVWkUVForp2t504n` | 18355 | Math- / #76 |
 | [P15 full-price](replicas/p15-full-price-v1/PROOF.md) | `1GsN4BU2pJ6lU9lbfTUF6vC1TBlDxEkDw` | 11352 | Math- / #74 |
 
-Machine index: [`replicas/INDEX.json`](replicas/INDEX.json) (suggested `meta-framework` catalog keys; only SIDE24 output is catalogued today).
+Machine index: [`replicas/INDEX.json`](replicas/INDEX.json) (suggested catalog keys; peer map to [meta-framework#6](https://github.com/d6g8k5htny-coder/meta-framework/pull/6)).
+
+**Peer split:** [meta-framework#6](https://github.com/d6g8k5htny-coder/meta-framework/pull/6) hosts interim SHA-matched copies of three Drive-primary proofs (cap / matrix-lifetime / palette) plus nonauthor notes, because that env can write the catalog. This repository remains the selective Drive-custody home. Overlapping proof bytes were re-checked identical (2026-09-25). Capsules/ZIPs/receipts stay excluded.
 
 Each replica directory has `SOURCE.json` (Drive id, bytes, SHA256, visibility observation, mathematical identity when known). Drive-primary means the exact proof file is not on the Math- default branch.
 

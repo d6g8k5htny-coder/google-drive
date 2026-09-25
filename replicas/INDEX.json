@@ -3,7 +3,27 @@
   "scientific_status_authority": false,
   "scientific_effect": "NONE",
   "meaning": "index of selected public Drive replicas in this repository; not theorem acceptance",
-  "meta_framework_followon": "Only side24-coefficient-drive-replica is in meta-framework today; remaining suggested_catalog_key rows need a write-capable agent on meta-framework/query-",
+  "peer_coordination": {
+    "meta_framework_pr": "https://github.com/d6g8k5htny-coder/meta-framework/pull/6",
+    "peer_branch": "cursor/catalog-drive-parents-5cb8",
+    "role_split": "google-drive holds selective Drive custody; meta-framework PR6 hosts interim SHA-matched copies of three Drive-primary proofs plus nonauthor notes for catalog routing from a writable repo",
+    "byte_match_verified_utc": "2026-09-25T17:30Z",
+    "overlap": [
+      "marked-cylinder-cap (Drive 1BnPods\u2026)",
+      "matrix-cap-lifetime (Drive 1foDgi\u2026)",
+      "consecutive-palette (Drive 1jvV6k\u2026)"
+    ],
+    "google_drive_only_awaiting_catalog": [
+      "lifetime-remainder-drive-replica",
+      "p15-full-price-drive-replica",
+      "p15-price-boundary-drive-replica",
+      "p15-realized-covers-drive-replica",
+      "rn-count-interface-drive-replica",
+      "rn-fixed-remote-window-drive-replica",
+      "side24-coefficient-proof-drive-replica"
+    ],
+    "preferred_long_term_custody": "google-drive replicas/* with SOURCE.json; catalog repository field may retarget from meta-framework interim copies after both PRs merge"
+  },
   "replicas": [
     {
       "folder": "demanded-palette-consecutive-v1",
@@ -21,7 +41,12 @@
         "visibility": "public"
       },
       "suggested_catalog_key": "demanded-palette-consecutive-drive-replica",
-      "catalogued_in_meta_framework": false
+      "catalogued_in_meta_framework_main": false,
+      "peer_meta_framework_pr6": {
+        "peer_folder": "consecutive-palette-v1",
+        "peer_catalog_key": "consecutive-palette",
+        "byte_match_verified": true
+      }
     },
     {
       "folder": "lifetime-remainder-v1",
@@ -40,7 +65,7 @@
         "visibility": "public"
       },
       "suggested_catalog_key": "lifetime-remainder-drive-replica",
-      "catalogued_in_meta_framework": false
+      "catalogued_in_meta_framework_main": false
     },
     {
       "folder": "marked-cylinder-cap-v1",
@@ -59,7 +84,12 @@
         "visibility": "public"
       },
       "suggested_catalog_key": "marked-cylinder-cap-drive-replica",
-      "catalogued_in_meta_framework": false
+      "catalogued_in_meta_framework_main": false,
+      "peer_meta_framework_pr6": {
+        "peer_folder": "marked-cylinder-cap-v1",
+        "peer_catalog_key": "marked-cylinder-cap",
+        "byte_match_verified": true
+      }
     },
     {
       "folder": "matrix-lifetime-unrestricted-v1",
@@ -77,7 +107,12 @@
         "visibility": "public"
       },
       "suggested_catalog_key": "matrix-lifetime-unrestricted-drive-replica",
-      "catalogued_in_meta_framework": false
+      "catalogued_in_meta_framework_main": false,
+      "peer_meta_framework_pr6": {
+        "peer_folder": "matrix-cap-lifetime-v1",
+        "peer_catalog_key": "matrix-cap-lifetime",
+        "byte_match_verified": true
+      }
     },
     {
       "folder": "p15-full-price-v1",
@@ -96,7 +131,7 @@
         "visibility": "public"
       },
       "suggested_catalog_key": "p15-full-price-drive-replica",
-      "catalogued_in_meta_framework": false
+      "catalogued_in_meta_framework_main": false
     },
     {
       "folder": "p15-price-boundary-v1",
@@ -115,7 +150,7 @@
         "visibility": "public"
       },
       "suggested_catalog_key": "p15-price-boundary-drive-replica",
-      "catalogued_in_meta_framework": false
+      "catalogued_in_meta_framework_main": false
     },
     {
       "folder": "p15-realized-covers-v1",
@@ -134,7 +169,7 @@
         "visibility": "public"
       },
       "suggested_catalog_key": "p15-realized-covers-drive-replica",
-      "catalogued_in_meta_framework": false
+      "catalogued_in_meta_framework_main": false
     },
     {
       "folder": "rn-count-interface-v1",
@@ -153,7 +188,7 @@
         "visibility": "public"
       },
       "suggested_catalog_key": "rn-count-interface-drive-replica",
-      "catalogued_in_meta_framework": false
+      "catalogued_in_meta_framework_main": false
     },
     {
       "folder": "rn-fixed-remote-window-v1",
@@ -172,7 +207,7 @@
         "visibility": "public"
       },
       "suggested_catalog_key": "rn-fixed-remote-window-drive-replica",
-      "catalogued_in_meta_framework": false
+      "catalogued_in_meta_framework_main": false
     },
     {
       "folder": "side24-coefficient-proof-v1",
@@ -191,7 +226,7 @@
         "visibility": "public"
       },
       "suggested_catalog_key": "side24-coefficient-proof-drive-replica",
-      "catalogued_in_meta_framework": false
+      "catalogued_in_meta_framework_main": false
     },
     {
       "folder": "side24-coefficient-v1",
@@ -210,7 +245,11 @@
         "visibility": "public"
       },
       "suggested_catalog_key": "side24-coefficient-drive-replica",
-      "catalogued_in_meta_framework": true
+      "catalogued_in_meta_framework_main": true,
+      "peer_meta_framework_pr6": {
+        "peer_catalog_key": "side24-coefficient-drive-replica",
+        "catalogued_on_main": true
+      }
     }
   ]
 }
