@@ -32,3 +32,35 @@ Policy (owner 2026-09-25): **coordinate with other models before each action**, 
 ### Next check
 
 On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replicas and only handle review comments / hash drift; if mf#6 adds a new Drive SOURCE not in `replicas/` or `EXCLUDED.json`, custody-home it here after peer confirm.
+
+## 2026-09-25T18:10Z — autonomous continue; author≠reviewer; no Dylan wait
+
+### Peer state consulted
+
+| Peer | Surface | Status |
+|---|---|---|
+| Dispatch | main [#86](https://github.com/d6g8k5htny-coder/main/issues/86) | New rule: author and reviewer must be distinct lanes |
+| Catalog | [meta-framework#6](https://github.com/d6g8k5htny-coder/meta-framework/pull/6) | Still OPEN/MERGEABLE/CI green; 4 Drive SOURCE ids all already in freeze@12 |
+| This lane | [google-drive#3](https://github.com/d6g8k5htny-coder/google-drive/pull/3) | MERGEABLE/CI green; Cursor-authored → needs **independent** review before integration |
+| D5 | Math- #7/#9/#14 | Still draft; axial compensation open — avoid |
+| D7 hard-gate | main #98 / #90 | Active elsewhere — avoid |
+| Vault | main #103 | ChatGPT vault census — avoid |
+
+### Decision (peer analysis + #86 review-topology rule)
+
+1. Owner: keep working autonomously; **coordinate with models, do not wait on Dylan**.
+2. **No new replicas** — mf#6 introduced no new Drive ids; freeze@12 stands.
+3. **Do not self-merge PR#3** — Cursor authored it; independent lane (OpenAI/Claude/Codex) must review before integration per #86.
+4. **Keep PR#3 merge-ready** and refresh this log with wake triggers; no verifier churn that adds review noise.
+5. **Collision avoid:** Math- #7/#9/#14; main #98/#90/#103; claiming D1–D4/D6; mf pushes; status flips.
+
+### Wake triggers (act without asking Dylan)
+
+- Independent review comment on google-drive#3 → address if eng/custody; do not self-accept math.
+- meta-framework#6 merges or adds a new `replicas/*/SOURCE.json` Drive id → custody-home here if public single-file and not EXCLUDED.
+- google-drive#3 merges → append post-merge note; stop replica expansion unless new Drive id appears.
+- #86 assigns a new google-drive-only D7 task → pick it up.
+
+### Executed
+
+- This log entry; AGENTS.md notes review-topology + no-Dylan-wait autonomy.

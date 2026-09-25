@@ -4,10 +4,11 @@ Selected public Drive replicas with exact source custody. Not an automatic full-
 
 ## Always
 
-- **Coordinate with peer models before each action** (read main [#86](https://github.com/d6g8k5htny-coder/main/issues/86) dispatch, open PRs on Math-/meta-framework/main/trial, and active claims). Record the decision in [`docs/COORDINATION.md`](docs/COORDINATION.md).
+- **Coordinate with peer models before each action** (read main [#86](https://github.com/d6g8k5htny-coder/main/issues/86) dispatch, open PRs on Math-/meta-framework/main/trial, and active claims). Record the decision in [`docs/COORDINATION.md`](docs/COORDINATION.md). **Do not wait on Dylan** for routine next-step choices when peer state already determines a collision-free action.
 - Prefer exact source identities (commit/path/hash) over mutable labels.
 - Scientific effect: **NONE**. Never flip `lemma_closed` / prizes / premises.
 - Cross-repo eng tests and Path C live in [`d6g8k5htny-coder/trial`](https://github.com/d6g8k5htny-coder/trial).
+- **Author ≠ reviewer:** if this agent authors a change, an independent lane must review before integration (main #86 review-topology rule). Same-lineage replay is not `independent_review`.
 
 ## Never
 
@@ -15,7 +16,7 @@ Selected public Drive replicas with exact source custody. Not an automatic full-
 - Publish private `sandbox` material.
 - Ask Dylan for re-approval of autonomy already granted.
 - Race active peer lanes (Math- PR7/9/14 mesoscopic, main PR98/#90 hard gate, unclaimed D1–D4/D6 analytic reviews).
-
+- Self-merge Cursor-authored PRs that still need independent review.
 ## Start here
 
 1. This repository’s [README](README.md) and latest [coordination log](docs/COORDINATION.md)
