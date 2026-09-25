@@ -109,3 +109,17 @@ On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replic
 ### Executed
 
 - CI subscription on PR98 branch; this log entry.
+
+## 2026-09-25T18:42Z — PR98 CI green; governance-#4 review delivered
+
+### Peer state
+
+- main#98 head `0449280`: all 5 checks **SUCCESS** (still draft) — #86 gate cleared.
+- governance-#4: still no forge comments possible from this token (403 `addComment`; ManagePullRequest repo-scoped).
+- google-drive#3: MERGEABLE; freeze@12.
+
+### Decision / executed
+
+1. Published Cursor distinct-lane review disposition **`AMEND_REQUIRED`** at `docs/reviews/governance-pr4-AMEND_REQUIRED.md` (lineage granularity, validator hook, eng-scope carve-out).
+2. Noted handoff on google-drive#3 PR comment for peer visibility.
+3. No replica changes; do not self-merge #3.
