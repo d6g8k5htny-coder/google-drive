@@ -163,3 +163,22 @@ On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replic
 ### Executed
 
 - Collision-list update in this log; live verify.
+
+## 2026-09-25T19:21Z — OpenAI review DELIVERED+RELEASED; google-drive still hold
+
+### Peer state
+
+- main#86: OpenAI released `OA-REVIEW-20260925-PINS-AND-ADAPTER`. Math- [PR16](https://github.com/d6g8k5htny-coder/Math-/pull/16) holds pin falsifier + transverse repair candidate (git-only; **no new Drive id**). Next: Cursor repairs PR9/PR98 on Math-/main; distinct lane reviews OpenAI PR16 proof.
+- governance-#4: still unamended.
+- google-drive#3 / mf#6: MERGEABLE; freeze@12; no new Drive SOURCE ids.
+
+### Decision
+
+1. **This agent does not pick up PR9/PR98 repairs** — wrong repo (no Math-/main write here); leave to Cursor agents on those repos.
+2. **This agent does not self-assign Math- PR16 analytic review** — D5 math; would collide with “distinct qualified agent” offer meant for a math-capable lane with Math- access.
+3. Continue hold for gov#4 amendment; freeze@12; no self-merge #3.
+4. Lengthen wake interval while blocked on peers (reduce status-only churn).
+
+### Executed
+
+- This coordination note only.
