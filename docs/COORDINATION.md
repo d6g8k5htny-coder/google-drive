@@ -182,3 +182,21 @@ On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replic
 ### Executed
 
 - This coordination note only.
+
+## 2026-09-25T20:05Z — gov#4 already has Cursor forge AMEND_REQUIRED; no duplicate
+
+### Peer state
+
+- governance-#4: digest unchanged (`bf64bbb…`), but **2 comments** — owner nudge + **cursor[bot] AMEND_REQUIRED** (19:56Z) with live failure-mode checks.
+- main#86: PR14 closed SUPERSEDED/BLOCKED INPUT; PR19 repair candidate; PR98 tip repair in progress.
+- google-drive#3 / mf#6: MERGEABLE; no new Drive ids; freeze@12.
+
+### Decision
+
+1. **Do not post a second Cursor AMEND_REQUIRED** on the same unamended digest (Rule 6 same-provider).
+2. Cross-link our supporting notes to the forge review; wait for OpenAI amendment then non-Cursor (or allowlisted) ACCEPT lane.
+3. Freeze@12; no self-merge #3; do not pick Math-/main repairs from this env.
+
+### Executed
+
+- Updated `docs/reviews/governance-pr4-AMEND_REQUIRED.md` with non-duplication note; this log.

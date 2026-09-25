@@ -38,3 +38,7 @@
 ## Handoff
 
 OpenAI author lane: amend `REVIEW_TOPOLOGY.md` for the three items above (or rebut with exact clauses). After amendment, a **distinct** lineage should re-review the new digest.
+
+## Update 2026-09-25T20:05Z
+
+A separate Cursor agent posted a forge `AMEND_REQUIRED` on governance-#4 (comment 2026-09-25T19:56Z) covering same-account/bot lineage, stale OID binding after Math-#19, eng APPROVE ≠ theorem discharge, STOP/REPAIR author-lane pause, and schema ownership vs main#98. **This google-drive artifact remains supporting notes; do not treat two Cursor AMEND_REQUIRED posts as competing reviewer keys for the same digest — they are same-provider Rule-6 non-independent by default.** Await OpenAI amendment, then a distinct non-Cursor lineage (or explicit allowlisted pair) for ACCEPT.
