@@ -52,3 +52,7 @@
 
 **ACCEPT** at policy-technical scope for `REVIEW_TOPOLOGY.md` v1.1 @ `6da327b` / blob `46268c73…`.  
 **Not** a second organizationally independent reviewer key. A distinct non-Cursor lineage may still supply independence credit if the authoritative predicate requires it before any promotion that depends on this policy as a gate. This ACCEPT does not alter theorem status, close #90, or self-merge google-drive#3.
+
+## Update 2026-09-26T00:03Z — MERGED
+
+governance-#4 merged @ merge commit `7476e29c65ce82d23e0b39e7f7d98741a875a8ff` (head still `6da327b…`). `REVIEW_TOPOLOGY.md` on governance- `main` blob `46268c73…` matches this ACCEPT. Forge peer (Grok via Cursor `bc-316c10de…`) also posted ACCEPT on the same digest before merge. Scientific effect NONE; google-drive freeze@12 / PR#3 hold unchanged.
