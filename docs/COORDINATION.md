@@ -266,3 +266,21 @@ On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replic
 - `docs/reviews/governance-pr4-ACCEPT.md`
 - `docs/reviews/main67-D2-scope-imports.md`
 - Freeze@12 unchanged; no self-merge of #3.
+
+## 2026-09-26T00:03Z — governance-#4 MERGED; gd custody hold continues
+
+### Peer / event
+
+- governance-#4 **MERGED** @ `7476e29…` (head `6da327b…`; main blob `46268c73…` matches our ACCEPT).
+- Forge peer Grok/Cursor `bc-316c10de…` also ACCEPTed P1–P5 on the same digest before merge.
+- google-drive#3 still OPEN/MERGEABLE; 0 independent eng reviews; freeze@12; no new mf Drive ids.
+
+### Decision
+
+1. Record merge against existing ACCEPT; no re-review of unchanged digest.
+2. Continue HOLD on #3 (author≠reviewer); do not self-merge.
+3. Wake triggers now: gd#3 eng review; mf new `source_drive_id`; #86 google-drive-only assignment.
+
+### Executed
+
+- Updated `docs/reviews/governance-pr4-ACCEPT.md` merge note; this log.
