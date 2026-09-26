@@ -1,0 +1,20 @@
+{
+  "bytes": 15160,
+  "mathematical_source": {
+    "bytes": 15160,
+    "carrier": "drive-primary",
+    "key": "marked-cylinder-cap",
+    "object": "MARKED-CYLINDER-CAP-v1",
+    "review_surface": "main#61 CAP-01/CAP-02 delivery; successor parent main#63",
+    "scope": "Author-side CAP-01/CAP-02 separating-cylinder / marked-cylinder cap proofs; not independent acceptance",
+    "sha256": "0bf922b9203c29088b12388807aa0e2ecd020485eb0f6e919679841b5b2636fc",
+    "visibility": "public"
+  },
+  "meaning": "one selected public raw-file replica, not complete Drive synchronization or scientific status",
+  "no_private_sources": true,
+  "replica_path": "replicas/marked-cylinder-cap-v1/PROOF.md",
+  "schema_version": 1,
+  "sha256": "0bf922b9203c29088b12388807aa0e2ecd020485eb0f6e919679841b5b2636fc",
+  "source_drive_id": "1BnPods7Lf-ECdD34noQihZcEfcqpy7R5",
+  "source_visibility_observed": "anyone-with-link reader; no sharing change"
+}

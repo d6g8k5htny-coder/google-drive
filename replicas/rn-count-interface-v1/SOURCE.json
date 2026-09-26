@@ -1,0 +1,20 @@
+{
+  "bytes": 8938,
+  "mathematical_source": {
+    "bytes": 8938,
+    "commit": "9b5fb7fa0ce3271afb4168dbada4893a53eaf307",
+    "key": "rn-count-interface",
+    "path": "frontiers/three_fronts_20260924/RN_COUNT_INTERFACE.md",
+    "repository": "Math-",
+    "scope": "Probability-to-count implications and exact counterexamples; actual Gaussian triple integral not evaluated",
+    "sha256": "aa993f5217bd70e6d1060402d121ab659f6582a098e29042c67585a345a8e3ab",
+    "visibility": "public"
+  },
+  "meaning": "one selected public raw-file replica, not complete Drive synchronization or scientific status",
+  "no_private_sources": true,
+  "replica_path": "replicas/rn-count-interface-v1/RN_COUNT_INTERFACE.md",
+  "schema_version": 1,
+  "sha256": "aa993f5217bd70e6d1060402d121ab659f6582a098e29042c67585a345a8e3ab",
+  "source_drive_id": "1n-AmY7H1UPf3_MK5wM5Wn62EeNmDzGvM",
+  "source_visibility_observed": "anyone-with-link reader; no sharing change"
+}

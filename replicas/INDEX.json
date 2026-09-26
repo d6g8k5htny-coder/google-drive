@@ -1,0 +1,289 @@
+{
+  "schema_version": 1,
+  "scientific_status_authority": false,
+  "scientific_effect": "NONE",
+  "meaning": "index of selected public Drive replicas in this repository; not theorem acceptance",
+  "peer_coordination": {
+    "meta_framework_pr": "https://github.com/d6g8k5htny-coder/meta-framework/pull/6",
+    "peer_branch": "cursor/catalog-drive-parents-5cb8",
+    "role_split": "google-drive holds selective Drive custody; meta-framework PR6 hosts interim SHA-matched copies plus nonauthor notes for catalog routing from a writable repo",
+    "byte_match_verified_utc": "2026-09-25T17:52Z",
+    "overlap": [
+      "marked-cylinder-cap (Drive 1BnPods\u2026)",
+      "matrix-cap-lifetime (Drive 1foDgi\u2026)",
+      "consecutive-palette (Drive 1jvV6k\u2026)",
+      "p15-b-original (Drive 19D-eHQ\u2026)"
+    ],
+    "google_drive_only_awaiting_catalog": [
+      "lifetime-remainder-drive-replica",
+      "p15-full-price-drive-replica",
+      "p15-price-boundary-drive-replica",
+      "p15-realized-covers-drive-replica",
+      "rn-count-interface-drive-replica",
+      "rn-fixed-remote-window-drive-replica",
+      "side24-coefficient-proof-drive-replica"
+    ],
+    "preferred_long_term_custody": "google-drive replicas/* with SOURCE.json; catalog repository field may retarget from meta-framework interim copies after both PRs merge",
+    "peer_pr_ready_for_review": true,
+    "peer_updated_observed": "2026-09-25T20:52Z",
+    "peer_note": "mf#6 still interim catalog + non-Drive downstream-gate-pr15-v1; no new source_drive_id since freeze@12",
+    "replica_freeze": 12,
+    "coordination_log": "docs/COORDINATION.md",
+    "dispatch": "https://github.com/d6g8k5htny-coder/main/issues/86",
+    "preferred_merge_order": [
+      "google-drive#3",
+      "meta-framework#6"
+    ]
+  },
+  "replicas": [
+    {
+      "folder": "demanded-palette-consecutive-v1",
+      "replica_path": "replicas/demanded-palette-consecutive-v1/PROOF.md",
+      "source_drive_id": "1jvV6kORTB7umKrCFAGSoQ385sUgBAKn5",
+      "bytes": 9335,
+      "sha256": "6abcc0607e7b4b3cfdcecec854aa2920bb3f830a238ac12e27d18babf64707eb",
+      "mathematical_source": {
+        "bytes": 9335,
+        "carrier": "drive-primary",
+        "key": "demanded-palette-consecutive",
+        "review_surface": "main#61 PAL-01 delivery",
+        "scope": "Author-side exact demanded-palette optimum for consecutive complete capacity sets; PAL-02 actual P15 application remains separate",
+        "sha256": "6abcc0607e7b4b3cfdcecec854aa2920bb3f830a238ac12e27d18babf64707eb",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "demanded-palette-consecutive-drive-replica",
+      "catalogued_in_meta_framework_main": false,
+      "peer_meta_framework_pr6": {
+        "peer_folder": "consecutive-palette-v1",
+        "peer_catalog_key": "consecutive-palette",
+        "byte_match_verified": true
+      }
+    },
+    {
+      "folder": "lifetime-remainder-v1",
+      "replica_path": "replicas/lifetime-remainder-v1/LIFETIME_REMAINDER.md",
+      "source_drive_id": "1xWGvtYUbG8FGVnGi_0-nX1asCOtqQLi7",
+      "bytes": 17734,
+      "sha256": "380b7d0abdb0fe2de5a6564565af9560d3f1b1ce22fd5538927db0c52f4f3a4a",
+      "mathematical_source": {
+        "bytes": 17734,
+        "commit": "9b5fb7fa0ce3271afb4168dbada4893a53eaf307",
+        "key": "lifetime-remainder",
+        "path": "frontiers/three_fronts_20260924/LIFETIME_REMAINDER.md",
+        "repository": "Math-",
+        "scope": "Author-side bounded unrestricted lifetime remainder; parent marked Kac-Rice and cap interfaces remain under review",
+        "sha256": "380b7d0abdb0fe2de5a6564565af9560d3f1b1ce22fd5538927db0c52f4f3a4a",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "lifetime-remainder-drive-replica",
+      "catalogued_in_meta_framework_main": false
+    },
+    {
+      "folder": "marked-cylinder-cap-v1",
+      "replica_path": "replicas/marked-cylinder-cap-v1/PROOF.md",
+      "source_drive_id": "1BnPods7Lf-ECdD34noQihZcEfcqpy7R5",
+      "bytes": 15160,
+      "sha256": "0bf922b9203c29088b12388807aa0e2ecd020485eb0f6e919679841b5b2636fc",
+      "mathematical_source": {
+        "bytes": 15160,
+        "carrier": "drive-primary",
+        "key": "marked-cylinder-cap",
+        "object": "MARKED-CYLINDER-CAP-v1",
+        "review_surface": "main#61 CAP-01/CAP-02 delivery; successor parent main#63",
+        "scope": "Author-side CAP-01/CAP-02 separating-cylinder / marked-cylinder cap proofs; not independent acceptance",
+        "sha256": "0bf922b9203c29088b12388807aa0e2ecd020485eb0f6e919679841b5b2636fc",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "marked-cylinder-cap-drive-replica",
+      "catalogued_in_meta_framework_main": false,
+      "peer_meta_framework_pr6": {
+        "peer_folder": "marked-cylinder-cap-v1",
+        "peer_catalog_key": "marked-cylinder-cap",
+        "byte_match_verified": true
+      }
+    },
+    {
+      "folder": "matrix-lifetime-unrestricted-v1",
+      "replica_path": "replicas/matrix-lifetime-unrestricted-v1/PROOF.md",
+      "source_drive_id": "1foDgiDi4XIKOfbrZEE8dWKV_BkZU8LIb",
+      "bytes": 40261,
+      "sha256": "9350ad6eaba6626b93c3dedeef9e2ff816e5cdf1c8318e85fb27499141c84bc7",
+      "mathematical_source": {
+        "bytes": 40261,
+        "carrier": "drive-primary",
+        "key": "uniform-matrix-cap-lifetime",
+        "review_surface": "main#63",
+        "scope": "Author-side RATE-03/04 and qualitative LAW-03/04 plus unrestricted leading-law extension; not on Math- default branch; no numerical C/r_* or RN/24-jet discharge",
+        "sha256": "9350ad6eaba6626b93c3dedeef9e2ff816e5cdf1c8318e85fb27499141c84bc7",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "matrix-lifetime-unrestricted-drive-replica",
+      "catalogued_in_meta_framework_main": false,
+      "peer_meta_framework_pr6": {
+        "peer_folder": "matrix-cap-lifetime-v1",
+        "peer_catalog_key": "matrix-cap-lifetime",
+        "byte_match_verified": true
+      }
+    },
+    {
+      "folder": "p15-b-original-v1",
+      "replica_path": "replicas/p15-b-original-v1/PROOF.md",
+      "source_drive_id": "19D-eHQAIXMGGy2ThZUfZ0GGjIKWm5C2j",
+      "bytes": 6286,
+      "sha256": "9b18b6e9abc90d18deef06ab12e3aa7794dad40e1618d99daa88e369c300e8c3",
+      "mathematical_source": {
+        "bytes": 6286,
+        "carrier": "drive-primary",
+        "key": "p15-b-original",
+        "object": "P15-B_PALETTE_SEPARATED_LOCALIZATION",
+        "scope": "SHA-matched public replica of P15-B palette-separated localization; not prize acceptance; peer catalog key p15-b-original on meta-framework#6",
+        "sha256": "9b18b6e9abc90d18deef06ab12e3aa7794dad40e1618d99daa88e369c300e8c3",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "p15-b-original-drive-replica",
+      "catalogued_in_meta_framework_main": false,
+      "peer_meta_framework_pr6": {
+        "peer_folder": "p15-b-original-v1",
+        "peer_catalog_key": "p15-b-original",
+        "byte_match_verified": true
+      }
+    },
+    {
+      "folder": "p15-full-price-v1",
+      "replica_path": "replicas/p15-full-price-v1/PROOF.md",
+      "source_drive_id": "1GsN4BU2pJ6lU9lbfTUF6vC1TBlDxEkDw",
+      "bytes": 11352,
+      "sha256": "87521901ca8e5405b4d1e47f1deb1cd0326affbd6f5967b53c4178590da993f9",
+      "mathematical_source": {
+        "bytes": 11352,
+        "commit": "f9938338f92590108b163ec96901038d84b70bb9",
+        "key": "p15-full-price",
+        "path": "frontiers/full_price_20260924/PROOF.md",
+        "repository": "Math-",
+        "scope": "Author-side full-probability hazard transfer for the realized capacity family with demands>=2; sharp factor; review main74",
+        "sha256": "87521901ca8e5405b4d1e47f1deb1cd0326affbd6f5967b53c4178590da993f9",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "p15-full-price-drive-replica",
+      "catalogued_in_meta_framework_main": false
+    },
+    {
+      "folder": "p15-price-boundary-v1",
+      "replica_path": "replicas/p15-price-boundary-v1/P15_PRICE_BOUNDARY.md",
+      "source_drive_id": "1i9eByN8jv97CYhZ4I0aEUr0XDmfCPrfi",
+      "bytes": 2266,
+      "sha256": "498af650ef7139c39d2630561dbfd0822c495ce6308a6cac8b767aefe0c2a40b",
+      "mathematical_source": {
+        "bytes": 2266,
+        "commit": "9b5fb7fa0ce3271afb4168dbada4893a53eaf307",
+        "key": "p15-price-boundary",
+        "path": "frontiers/three_fronts_20260924/P15_PRICE_BOUNDARY.md",
+        "repository": "Math-",
+        "scope": "Exact counterexample to the unrestricted same-palette transformed-price extension",
+        "sha256": "498af650ef7139c39d2630561dbfd0822c495ce6308a6cac8b767aefe0c2a40b",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "p15-price-boundary-drive-replica",
+      "catalogued_in_meta_framework_main": false
+    },
+    {
+      "folder": "p15-realized-covers-v1",
+      "replica_path": "replicas/p15-realized-covers-v1/P15_REALIZED_COVERS.md",
+      "source_drive_id": "1Fd0o_UzCxpWki08b04e2SeQH-a2BlRtk",
+      "bytes": 11467,
+      "sha256": "c0dbb821fb57b685a20cc321e4074456f39a9697f3104afd1f728e4732179bb9",
+      "mathematical_source": {
+        "bytes": 11467,
+        "commit": "9b5fb7fa0ce3271afb4168dbada4893a53eaf307",
+        "key": "p15-realized-covers",
+        "path": "frontiers/three_fronts_20260924/P15_REALIZED_COVERS.md",
+        "repository": "Math-",
+        "scope": "Specified original-coordinate family and nonempty covers, c<=p; not arbitrary P15 input or prize closure",
+        "sha256": "c0dbb821fb57b685a20cc321e4074456f39a9697f3104afd1f728e4732179bb9",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "p15-realized-covers-drive-replica",
+      "catalogued_in_meta_framework_main": false
+    },
+    {
+      "folder": "rn-count-interface-v1",
+      "replica_path": "replicas/rn-count-interface-v1/RN_COUNT_INTERFACE.md",
+      "source_drive_id": "1n-AmY7H1UPf3_MK5wM5Wn62EeNmDzGvM",
+      "bytes": 8938,
+      "sha256": "aa993f5217bd70e6d1060402d121ab659f6582a098e29042c67585a345a8e3ab",
+      "mathematical_source": {
+        "bytes": 8938,
+        "commit": "9b5fb7fa0ce3271afb4168dbada4893a53eaf307",
+        "key": "rn-count-interface",
+        "path": "frontiers/three_fronts_20260924/RN_COUNT_INTERFACE.md",
+        "repository": "Math-",
+        "scope": "Probability-to-count implications and exact counterexamples; actual Gaussian triple integral not evaluated",
+        "sha256": "aa993f5217bd70e6d1060402d121ab659f6582a098e29042c67585a345a8e3ab",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "rn-count-interface-drive-replica",
+      "catalogued_in_meta_framework_main": false
+    },
+    {
+      "folder": "rn-fixed-remote-window-v1",
+      "replica_path": "replicas/rn-fixed-remote-window-v1/PROOF.md",
+      "source_drive_id": "1Un31SxLZhSA2hE4YOVWkUVForp2t504n",
+      "bytes": 18355,
+      "sha256": "a332bae9bdc0106ce17047f7e0409cc3d94eb610a0c7b74ba5ba2d01a1620cb7",
+      "mathematical_source": {
+        "bytes": 18355,
+        "commit": "191ea7d541a486736ba7bbddfd4eac25a6c4567b",
+        "key": "rn-fixed-remote-window",
+        "path": "frontiers/remote_window_20260924/PROOF.md",
+        "repository": "Math-",
+        "scope": "Author-side actual cubic count on a fixed remote spatial region and shrinking height window; no shrinking-cutoff or 24-jet certificate",
+        "sha256": "a332bae9bdc0106ce17047f7e0409cc3d94eb610a0c7b74ba5ba2d01a1620cb7",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "rn-fixed-remote-window-drive-replica",
+      "catalogued_in_meta_framework_main": false
+    },
+    {
+      "folder": "side24-coefficient-proof-v1",
+      "replica_path": "replicas/side24-coefficient-proof-v1/PROOF.md",
+      "source_drive_id": "115q1do3rEIz6EFJwmIdA6KDAjAhntiT8",
+      "bytes": 10272,
+      "sha256": "c06daccc4ba4b9168522b9888b76a7d599934fc3b91bd753ee5d492262917769",
+      "mathematical_source": {
+        "bytes": 10272,
+        "commit": "e329fba1e927a12dbb4f0d1556f85f39284d17a9",
+        "key": "side24-coefficient",
+        "path": "coefficients/side24_v1/PROOF.md",
+        "repository": "Math-",
+        "scope": "Author-side evaluation of main issue63 Eq15.2; parent proof unreviewed",
+        "sha256": "c06daccc4ba4b9168522b9888b76a7d599934fc3b91bd753ee5d492262917769",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "side24-coefficient-proof-drive-replica",
+      "catalogued_in_meta_framework_main": false
+    },
+    {
+      "folder": "side24-coefficient-v1",
+      "replica_path": "replicas/side24-coefficient-v1/ENCLOSURE.json",
+      "source_drive_id": "1aYTbm_in_3ENXKw83Hx7cJBkTLBc4PQi",
+      "bytes": 1090,
+      "sha256": "72b6cd92d31394cdaf5da8919a5d548e902228af1f095cc184158a71d8287811",
+      "mathematical_source": {
+        "bytes": 10272,
+        "commit": "e329fba1e927a12dbb4f0d1556f85f39284d17a9",
+        "key": "side24-coefficient",
+        "path": "coefficients/side24_v1/PROOF.md",
+        "repository": "Math-",
+        "scope": "Author-side evaluation of main issue63 Eq15.2; parent proof unreviewed",
+        "sha256": "c06daccc4ba4b9168522b9888b76a7d599934fc3b91bd753ee5d492262917769",
+        "visibility": "public"
+      },
+      "suggested_catalog_key": "side24-coefficient-drive-replica",
+      "catalogued_in_meta_framework_main": true,
+      "peer_meta_framework_pr6": {
+        "peer_catalog_key": "side24-coefficient-drive-replica",
+        "catalogued_on_main": true
+      }
+    }
+  ]
+}

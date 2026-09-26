@@ -1,0 +1,18 @@
+# Byte custody of selected public Drive replicas. Scientific effect: NONE.
+name: verify-replicas
+
+on:
+  push:
+    branches: [main, 'cursor/**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  local-bytes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify SOURCE.json vs local replica bytes
+        run: python3 scripts/verify_replicas.py
+      - name: Negative controls for verifier
+        run: python3 -m unittest scripts.test_verify_replicas -v

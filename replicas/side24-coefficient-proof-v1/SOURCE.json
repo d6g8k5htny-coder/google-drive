@@ -1,0 +1,20 @@
+{
+  "bytes": 10272,
+  "mathematical_source": {
+    "bytes": 10272,
+    "commit": "e329fba1e927a12dbb4f0d1556f85f39284d17a9",
+    "key": "side24-coefficient",
+    "path": "coefficients/side24_v1/PROOF.md",
+    "repository": "Math-",
+    "scope": "Author-side evaluation of main issue63 Eq15.2; parent proof unreviewed",
+    "sha256": "c06daccc4ba4b9168522b9888b76a7d599934fc3b91bd753ee5d492262917769",
+    "visibility": "public"
+  },
+  "meaning": "one selected public raw-file replica, not complete Drive synchronization or scientific status",
+  "no_private_sources": true,
+  "replica_path": "replicas/side24-coefficient-proof-v1/PROOF.md",
+  "schema_version": 1,
+  "sha256": "c06daccc4ba4b9168522b9888b76a7d599934fc3b91bd753ee5d492262917769",
+  "source_drive_id": "115q1do3rEIz6EFJwmIdA6KDAjAhntiT8",
+  "source_visibility_observed": "anyone-with-link reader; no sharing change"
+}
