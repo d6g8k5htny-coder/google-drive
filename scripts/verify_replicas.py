@@ -2,9 +2,10 @@
 """Verify selected google-drive replicas against SOURCE.json and optional live Drive.
 
 Scientific effect: NONE. A hash match is not theorem acceptance or currentness.
-Does not change Drive sharing. Confines each SOURCE replica_path to that SOURCE's
-replica directory under replicas/ (rejects absolute, parent-relative, and
-symlink-escaping paths). Requires replicas/INDEX.json and replicas/EXCLUDED.json.
+Does not change Drive sharing. Confines SOURCE metadata and replica payloads to the
+resolved workspace replicas/ tree (rejects absolute, parent-relative, file-symlink,
+directory-symlink, and replicas-root symlink escapes). Requires replicas/INDEX.json
+and replicas/EXCLUDED.json.
 
 Usage:
   python3 scripts/verify_replicas.py              # local SOURCE vs replica bytes
@@ -22,6 +23,62 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REPLICAS = ROOT / "replicas"
+
+
+def _is_relative_to(path: Path, parent: Path) -> bool:
+    try:
+        path.relative_to(parent)
+        return True
+    except ValueError:
+        return False
+
+
+def workspace_anchors(root: Path) -> tuple[Path, Path]:
+    """Return (workspace_resolved, replicas_resolved) anchored to workspace.
+
+    Rejects a replicas/ directory (or symlink) that resolves outside the workspace.
+    """
+    workspace = root.resolve(strict=False)
+    replicas_lexical = workspace / "replicas"
+    replicas_resolved = replicas_lexical.resolve(strict=False)
+    if not _is_relative_to(replicas_resolved, workspace):
+        raise ValueError("replicas/ resolves outside workspace")
+    return workspace, replicas_resolved
+
+
+def confine_source_path(source_path: Path, *, root: Path = ROOT) -> tuple[Path, str]:
+    """Require SOURCE.json itself to resolve under workspace/replicas/<folder>/.
+
+    Returns (resolved_source_path, folder_name).
+    """
+    workspace, replicas_resolved = workspace_anchors(root)
+    resolved = source_path.resolve(strict=True)
+    if not resolved.is_file():
+        raise FileNotFoundError(f"SOURCE path is not a file: {source_path}")
+    if not _is_relative_to(resolved, replicas_resolved):
+        raise ValueError(
+            f"SOURCE path {source_path} resolves outside replicas/ "
+            f"(possible directory symlink escape)"
+        )
+    rel = resolved.relative_to(replicas_resolved)
+    if len(rel.parts) != 2 or rel.parts[1] != "SOURCE.json":
+        raise ValueError(
+            f"SOURCE path must be replicas/<folder>/SOURCE.json, got {rel.as_posix()!r}"
+        )
+    folder = rel.parts[0]
+    if folder in ("", ".", "..") or "/" in folder or "\\" in folder:
+        raise ValueError(f"invalid replica folder name {folder!r}")
+    folder_resolved = (workspace / "replicas" / folder).resolve(strict=False)
+    if not _is_relative_to(folder_resolved, replicas_resolved):
+        raise ValueError(
+            f"replicas/{folder}/ resolves outside replicas/ "
+            f"(directory symlink escape)"
+        )
+    if resolved.parent.resolve(strict=True) != folder_resolved:
+        raise ValueError(
+            f"SOURCE parent for {folder} does not match confined replicas/{folder}/"
+        )
+    return resolved, folder
 
 
 def load_source(path: Path) -> dict:
@@ -55,53 +112,58 @@ def resolve_confined_replica(
 ) -> Path:
     """Resolve SOURCE replica_path strictly inside that SOURCE's replica directory.
 
-    Rejects absolute paths, parent-relative segments, and symlink escapes that
-    resolve outside the intended replicas/<folder>/ directory.
+    Anchors replicas/ and the selected folder to the resolved workspace boundary.
+    Rejects absolute paths, parent-relative segments, payload symlink escapes, and
+    directory/root symlink escapes that move the folder outside workspace/replicas/.
     """
-    folder = source_path.parent.name
-    intended_lexical = Path(os.path.normpath(str(root / "replicas" / folder)))
-    intended_resolved = intended_lexical.resolve(strict=False)
+    workspace, replicas_resolved = workspace_anchors(root)
+    # Validate SOURCE confinement first (also rejects symlinked replica folders).
+    _confined_source, folder = confine_source_path(source_path, root=root)
+    folder_resolved = (workspace / "replicas" / folder).resolve(strict=False)
+    if not _is_relative_to(folder_resolved, replicas_resolved):
+        raise ValueError(
+            f"{folder}: replicas/{folder}/ resolves outside replicas/ "
+            f"(directory symlink escape)"
+        )
+
     raw = replica_path_field
     candidate = Path(raw)
     if candidate.is_absolute():
         raise ValueError(
-            f"{source_path.parent.name}: replica_path must be relative, got absolute {raw!r}"
+            f"{folder}: replica_path must be relative, got absolute {raw!r}"
         )
     if ".." in candidate.parts:
         raise ValueError(
-            f"{source_path.parent.name}: replica_path must not contain '..': {raw!r}"
+            f"{folder}: replica_path must not contain '..': {raw!r}"
         )
-    # Lexical join only (no symlink follow) so the declared path must sit under
-    # replicas/<folder>/ before any filesystem resolution.
-    lexical = Path(os.path.normpath(str(root / candidate)))
-    try:
-        lexical.relative_to(intended_lexical)
-    except ValueError as exc:
+
+    expected_prefix = Path("replicas") / folder
+    # Lexical join only (no symlink follow) under workspace.
+    lexical = Path(os.path.normpath(str(workspace / candidate)))
+    expected_dir_lexical = Path(os.path.normpath(str(workspace / expected_prefix)))
+    if not _is_relative_to(lexical, expected_dir_lexical):
         raise ValueError(
-            f"{source_path.parent.name}: replica_path {raw!r} escapes "
-            f"replicas/{folder}/"
-        ) from exc
+            f"{folder}: replica_path {raw!r} escapes replicas/{folder}/"
+        )
     if not lexical.exists():
-        raise FileNotFoundError(
-            f"{source_path.parent.name}: missing confined replica {raw}"
-        )
+        raise FileNotFoundError(f"{folder}: missing confined replica {raw}")
     if not lexical.is_file() and not lexical.is_symlink():
-        raise FileNotFoundError(
-            f"{source_path.parent.name}: replica_path {raw!r} is not a file"
-        )
-    # Follow symlinks only after lexical confinement; reject targets outside.
+        raise FileNotFoundError(f"{folder}: replica_path {raw!r} is not a file")
+
+    # Follow symlinks only after lexical confinement; reject targets outside the
+    # *workspace-anchored* folder (not a folder that has itself escaped via symlink).
     resolved = lexical.resolve(strict=True)
     if not resolved.is_file():
-        raise FileNotFoundError(
-            f"{source_path.parent.name}: missing confined replica {raw}"
-        )
-    try:
-        resolved.relative_to(intended_resolved)
-    except ValueError as exc:
+        raise FileNotFoundError(f"{folder}: missing confined replica {raw}")
+    if not _is_relative_to(resolved, folder_resolved):
         raise ValueError(
-            f"{source_path.parent.name}: replica_path {raw!r} resolves outside "
+            f"{folder}: replica_path {raw!r} resolves outside "
             f"replicas/{folder}/ via symlink or mount"
-        ) from exc
+        )
+    if not _is_relative_to(resolved, replicas_resolved):
+        raise ValueError(
+            f"{folder}: replica_path {raw!r} resolves outside replicas/"
+        )
     return resolved
 
 
@@ -125,6 +187,12 @@ def main() -> int:
     )
     args = parser.parse_args()
 
+    try:
+        workspace_anchors(ROOT)
+    except ValueError as exc:
+        print(f"FAIL: {exc}", file=sys.stderr)
+        return 1
+
     sources = sorted(REPLICAS.glob("*/SOURCE.json"))
     if not sources:
         print("FAIL: no replicas/*/SOURCE.json found", file=sys.stderr)
@@ -142,16 +210,18 @@ def main() -> int:
     checked = []
     for source_path in sources:
         try:
-            src = load_source(source_path)
-            replica = resolve_confined_replica(source_path, src["replica_path"])
+            confined_source, folder = confine_source_path(source_path)
+            src = load_source(confined_source)
+            replica = resolve_confined_replica(confined_source, src["replica_path"])
         except (ValueError, FileNotFoundError, OSError) as exc:
-            print(f"FAIL {source_path.parent.name}: {exc}")
+            label = source_path.parent.name if source_path else "?"
+            print(f"FAIL {label}: {exc}")
             return 1
         raw = replica.read_bytes()
         digest = hashlib.sha256(raw).hexdigest()
         if len(raw) != src["bytes"] or digest != src["sha256"]:
             print(
-                f"FAIL {source_path.parent.name}: local bytes/hash != SOURCE.json "
+                f"FAIL {folder}: local bytes/hash != SOURCE.json "
                 f"(local {len(raw)}/{digest})"
             )
             return 1
@@ -159,13 +229,13 @@ def main() -> int:
             remote = fetch_drive(src["source_drive_id"])
             if remote != raw:
                 print(
-                    f"FAIL {source_path.parent.name}: live Drive "
+                    f"FAIL {folder}: live Drive "
                     f"{src['source_drive_id']} != local replica"
                 )
                 return 1
-        checked.append(source_path.parent.name)
+        checked.append(folder)
         print(
-            f"PASS {source_path.parent.name}: "
+            f"PASS {folder}: "
             f"{src['bytes']} B sha256={src['sha256'][:12]}… "
             f"Drive {src['source_drive_id']}"
             + (" (live match)" if args.live_drive else " (local only)")
@@ -177,7 +247,8 @@ def main() -> int:
         return 1
     selected_ids = set()
     for folder in checked:
-        src = json.loads((REPLICAS / folder / "SOURCE.json").read_text(encoding="utf-8"))
+        confined_source, _ = confine_source_path(REPLICAS / folder / "SOURCE.json")
+        src = json.loads(confined_source.read_text(encoding="utf-8"))
         selected_ids.add(src["source_drive_id"])
     for row in excluded.get("excluded", []):
         fid = row.get("source_drive_id")
@@ -195,7 +266,8 @@ def main() -> int:
         print(f"FAIL INDEX.json folders {sorted(indexed)} != verified {sorted(checked)}")
         return 1
     for row in index["replicas"]:
-        src = json.loads((REPLICAS / row["folder"] / "SOURCE.json").read_text(encoding="utf-8"))
+        confined_source, _ = confine_source_path(REPLICAS / row["folder"] / "SOURCE.json")
+        src = json.loads(confined_source.read_text(encoding="utf-8"))
         for field in ("bytes", "sha256", "source_drive_id", "replica_path"):
             if row.get(field) != src.get(field):
                 print(f"FAIL INDEX.json {row['folder']}.{field} != SOURCE.json")

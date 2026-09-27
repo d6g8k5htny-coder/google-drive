@@ -249,6 +249,158 @@ class VerifyReplicasTests(unittest.TestCase):
         finally:
             shutil.rmtree(tmp_path, ignore_errors=True)
 
+    def test_symlinked_replica_folder_fails(self) -> None:
+        """Directory symlink: replicas/<folder> → outside workspace tree."""
+        if os.name == "nt":
+            self.skipTest("symlink probe not required on Windows")
+        tmp_path, src, script = _fixture_repo()
+        try:
+            outside = tmp_path / "outside-folder"
+            outside.mkdir()
+            payload_name = Path(src["replica_path"]).name
+            shutil.copy2(
+                tmp_path / "replicas" / FIXTURE_FOLDER / payload_name,
+                outside / payload_name,
+            )
+            (outside / "SOURCE.json").write_text(
+                (tmp_path / "replicas" / FIXTURE_FOLDER / "SOURCE.json").read_text(
+                    encoding="utf-8"
+                ),
+                encoding="utf-8",
+            )
+            # Replace real folder with symlink to outside.
+            shutil.rmtree(tmp_path / "replicas" / FIXTURE_FOLDER)
+            (tmp_path / "replicas" / FIXTURE_FOLDER).symlink_to(
+                outside.resolve(), target_is_directory=True
+            )
+            proc = _run_verify(script, tmp_path)
+            self.assertEqual(proc.returncode, 1, proc.stdout + proc.stderr)
+            combined = (proc.stdout + proc.stderr).lower()
+            self.assertTrue(
+                "symlink" in combined
+                or "outside" in combined
+                or "resolves outside" in combined
+                or "directory" in combined,
+                proc.stdout + proc.stderr,
+            )
+        finally:
+            shutil.rmtree(tmp_path, ignore_errors=True)
+
+    def test_symlinked_replicas_root_fails(self) -> None:
+        """replicas/ itself is a symlink escaping the workspace."""
+        if os.name == "nt":
+            self.skipTest("symlink probe not required on Windows")
+        tmp_path, _src, script = _fixture_repo()
+        try:
+            real_replicas = tmp_path / "real-replicas-store"
+            shutil.move(str(tmp_path / "replicas"), str(real_replicas))
+            # Point replicas/ at a store outside the workspace root used by the script.
+            escape_root = tmp_path / "escape-root"
+            escape_root.mkdir()
+            escaped = escape_root / "replicas"
+            shutil.copytree(real_replicas, escaped)
+            (tmp_path / "replicas").symlink_to(escaped.resolve(), target_is_directory=True)
+            # workspace_anchors compares replicas.resolve() to root.resolve();
+            # escaped is still under tmp_path, so move store fully outside tmp_path.
+            shutil.rmtree(tmp_path / "replicas", ignore_errors=True)
+            if (tmp_path / "replicas").is_symlink() or (tmp_path / "replicas").exists():
+                (tmp_path / "replicas").unlink(missing_ok=True)
+            outside_parent = Path(tempfile.mkdtemp())
+            try:
+                outside_replicas = outside_parent / "replicas"
+                shutil.copytree(real_replicas, outside_replicas)
+                (tmp_path / "replicas").symlink_to(
+                    outside_replicas.resolve(), target_is_directory=True
+                )
+                proc = _run_verify(script, tmp_path)
+                self.assertEqual(proc.returncode, 1, proc.stdout + proc.stderr)
+                combined = (proc.stdout + proc.stderr).lower()
+                self.assertTrue(
+                    "replicas/" in combined and "outside" in combined,
+                    proc.stdout + proc.stderr,
+                )
+            finally:
+                shutil.rmtree(outside_parent, ignore_errors=True)
+        finally:
+            shutil.rmtree(tmp_path, ignore_errors=True)
+
+    def test_directory_symlink_probe_matches_review(self) -> None:
+        """Exact adversarial probe from the HOLD re-audit (harmless fixtures only)."""
+        if os.name == "nt":
+            self.skipTest("symlink probe not required on Windows")
+        import importlib.util
+
+        tmp_path = Path(tempfile.mkdtemp())
+        try:
+            script = _install_script(tmp_path)
+            spec = importlib.util.spec_from_file_location("verify_replicas", script)
+            assert spec and spec.loader
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+
+            root = tmp_path / "ws"
+            outside = tmp_path / "outside"
+            (root / "replicas").mkdir(parents=True)
+            outside.mkdir()
+            (outside / "PROOF.md").write_text(
+                "fixture outside workspace\n", encoding="utf-8"
+            )
+            (outside / "SOURCE.json").write_text("{}", encoding="utf-8")
+            (root / "replicas" / "sample").symlink_to(
+                outside, target_is_directory=True
+            )
+            with self.assertRaises((ValueError, FileNotFoundError, OSError)):
+                mod.resolve_confined_replica(
+                    root / "replicas" / "sample" / "SOURCE.json",
+                    "replicas/sample/PROOF.md",
+                    root=root,
+                )
+        finally:
+            shutil.rmtree(tmp_path, ignore_errors=True)
+
+    def test_escaping_source_metadata_fails(self) -> None:
+        """SOURCE.json reached only via a directory symlink must be rejected."""
+        if os.name == "nt":
+            self.skipTest("symlink probe not required on Windows")
+        import importlib.util
+
+        tmp_path = Path(tempfile.mkdtemp())
+        try:
+            script = _install_script(tmp_path)
+            spec = importlib.util.spec_from_file_location("verify_replicas", script)
+            assert spec and spec.loader
+            mod = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(mod)
+
+            root = tmp_path / "ws"
+            outside = tmp_path / "outside-meta"
+            (root / "replicas").mkdir(parents=True)
+            outside.mkdir()
+            (outside / "SOURCE.json").write_text(
+                json.dumps(
+                    {
+                        "bytes": 1,
+                        "sha256": "a" * 64,
+                        "source_drive_id": "x",
+                        "replica_path": "replicas/sample/PROOF.md",
+                        "schema_version": 1,
+                        "no_private_sources": True,
+                        "meaning": "probe",
+                    }
+                ),
+                encoding="utf-8",
+            )
+            (outside / "PROOF.md").write_text("x", encoding="utf-8")
+            (root / "replicas" / "sample").symlink_to(
+                outside, target_is_directory=True
+            )
+            with self.assertRaises(ValueError):
+                mod.confine_source_path(
+                    root / "replicas" / "sample" / "SOURCE.json", root=root
+                )
+        finally:
+            shutil.rmtree(tmp_path, ignore_errors=True)
+
 
 if __name__ == "__main__":
     unittest.main()

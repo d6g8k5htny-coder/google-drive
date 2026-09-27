@@ -304,3 +304,20 @@ On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replic
 
 - `scripts/verify_replicas.py` confinement + required manifests.
 - `scripts/test_verify_replicas.py` negative controls expanded.
+
+## 2026-09-27T22:16Z — gd#3 directory-symlink bypass; bounded repair
+
+### Peer / event
+
+- Owner @cursor on [google-drive#3](https://github.com/d6g8k5htny-coder/google-drive/pull/3): retain HOLD/AMEND on `1c29872…`. Adversarial probe: symlinked `replicas/<folder>/` still bypassed confinement (blob `7e215604…`). Authorized bounded repair; no child agents; no self-accept.
+
+### Decision
+
+1. Anchor replicas root + folder to resolved workspace boundary; confine SOURCE before read.
+2. Negative tests: directory-symlink folder, symlinked replicas/, escaping SOURCE, exact review probe.
+3. Workflow: SHA-pin checkout@v4.2.2, `permissions: contents: read`, `persist-credentials: false`, run tests under `python3 -O`.
+4. Preserve all 12 payload/metadata hashes; freeze@12; no self-merge.
+
+### Executed
+
+- Verifier + tests + workflow amend on this PR; request fresh independent review.
