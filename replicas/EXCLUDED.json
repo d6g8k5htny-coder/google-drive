@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "scientific_status_authority": false,
+  "scientific_effect": "NONE",
+  "meaning": "Drive objects inspected and intentionally NOT selected as google-drive replicas",
+  "policy": "Prefer single mathematical proof/output files with exact hash + public visibility. Skip capsules/ZIPs when constituent proofs are already replicated. Skip delivery receipts. Skip closed/superseded review surfaces unless newly selected.",
+  "excluded": [
+    {
+      "source_drive_id": "1soVnQdYxLU8LHcQzteabic_Bdn6fD_dE",
+      "reason": "capsule_zip",
+      "review_surface": "main#61/#62 CAP-PAL capsule",
+      "note": "Multi-payload ZIP; individual CAP/PAL proofs already replicated as single files",
+      "bytes": 86308,
+      "sha256": "795115c377b9d37b87f953555f86c7f3f4b514298551e110391f3cba9e03340f",
+      "kind": "zip"
+    },
+    {
+      "source_drive_id": "1xrKSRwzxSVj_AjfMOH8tx70sf0jELnw4",
+      "reason": "capsule_zip",
+      "review_surface": "main#63",
+      "note": "Multi-payload ZIP; matrix/lifetime proof already replicated as single file",
+      "bytes": 213545,
+      "sha256": "e50a446770912b01d931e5ef0285dc9de39ff55fec590c62173a06e628ea15c8",
+      "kind": "zip"
+    },
+    {
+      "source_drive_id": "1MM_-5NWAQoNjX9Pl19Yp1uOxXqPiX6OI",
+      "reason": "capsule_zip",
+      "review_surface": "main#67",
+      "note": "Multi-payload ZIP; four three-fronts proofs already replicated as single files",
+      "bytes": 244656,
+      "sha256": "3c82240075d376f5868b26e8fa34b1d21e497da6d039cdbb351f567f5fe95fe5",
+      "kind": "zip"
+    },
+    {
+      "source_drive_id": "1g9IXukjuhh2t0hNTKtejWUZzGAKZNY8c",
+      "reason": "capsule_zip",
+      "review_surface": "main#76",
+      "note": "Multi-payload ZIP; RN fixed-remote proof already replicated as single file",
+      "bytes": 191106,
+      "sha256": "70f912046833a56f226ca2cf765863e2444d3a417d96984ed68bfebfbe30e879",
+      "kind": "zip"
+    },
+    {
+      "source_drive_id": "1lRvVjuja4zXD59R0yCSM-6Utdon5FsfF",
+      "reason": "capsule_zip",
+      "review_surface": "main#58 (closed/superseded)",
+      "note": "Historical capsule; issue closed under #86 cleanup",
+      "bytes": 101854,
+      "sha256": "abc6df6b86efdab5af201d1028a1f1f45cdc3125e205a524d8cc4fd426ec2667",
+      "kind": "zip"
+    },
+    {
+      "source_drive_id": "1WplxXCRnNG-9xHEGy-ZFZtxcGtz0HH1P",
+      "reason": "closed_superseded_review_surface",
+      "review_surface": "main#58 (closed/superseded)",
+      "note": "Per #86, older review surfaces closed; not selected for new public replica",
+      "bytes": 14459,
+      "sha256": "a1f500c83644f38ba39223c90baf2d652d171e5b0d0895c7c37606f3bb7974ce",
+      "kind": "md"
+    },
+    {
+      "source_drive_id": "1zPLN90nK7nwDXvXMOsvmfS2uQrHDrxrE",
+      "reason": "closed_superseded_review_surface",
+      "review_surface": "main#59 (closed/superseded)",
+      "note": "Per #86, older review surfaces closed; PAL-01 consecutive-palette already replicated",
+      "bytes": 9418,
+      "sha256": "9eafbf8be577638ba871d97f5505d0b0ce9e41ff3c4c4b241ee259431c13b5af",
+      "kind": "md"
+    },
+    {
+      "source_drive_id": "1kX1END0p34_3NEGY4QJZ7z-oLvQegQLY",
+      "reason": "delivery_receipt",
+      "review_surface": "main#61",
+      "note": "Machine delivery receipt JSON; not a mathematical proof payload",
+      "bytes": 6369,
+      "sha256": "192c54a6a650c7a7b62b787373cbc6db35ef953cfe92ecc517cfb1661e8aa9f0",
+      "kind": "json"
+    },
+    {
+      "source_drive_id": "1VjO_2C3Ywiv345MXKL4W6OvF8dTam_RV",
+      "reason": "delivery_receipt",
+      "review_surface": "main#61",
+      "note": "Readable delivery receipt; not a mathematical proof payload",
+      "bytes": 4761,
+      "sha256": "00f0a9ea8371286a5d4c504597b4e3c847a58c1fbbeb285301e2ed6721041414",
+      "kind": "md"
+    },
+    {
+      "source_drive_id": "1tD9a3fgDYsrXOYdejT7FuJ693-rUWcjw",
+      "reason": "delivery_receipt",
+      "review_surface": "main#61/#63 handoff",
+      "note": "Delivery/handoff note; proof bytes live under matrix-lifetime-unrestricted-v1",
+      "bytes": 7264,
+      "sha256": "472d59d03bb0dc904c2d856acc461f0302bdb1f0f4eb714592ba5f8fd7729b41",
+      "kind": "md"
+    },
+    {
+      "source_drive_id": "1SjnJxj2Qxf0J3zmDVXn91-au0dkXOqGV",
+      "reason": "delivery_receipt",
+      "review_surface": "main#61/#67 handoff",
+      "note": "Delivery/handoff note; three-fronts proofs already replicated individually",
+      "bytes": 7766,
+      "sha256": "8395449ffee37afe73bb99ea91da6937e2b01e6932ec9a69469899ce7cd6ff57",
+      "kind": "md"
+    },
+    {
+      "source_drive_id": "1n1JdWAuYOEUcZ99wfv5fsv5alqXflyiL",
+      "reason": "delivery_receipt",
+      "review_surface": "main#76",
+      "note": "Delivery receipt; RN proof already replicated",
+      "bytes": 8875,
+      "sha256": "4005e65b1ceb63153145776c20a1e9d17bb2a01faf0315a24877acf39901282c",
+      "kind": "md"
+    },
+    {
+      "source_drive_id": "1Ae8oQnr6uj2LLrQ42hbXzqEL5juslL32",
+      "reason": "delivery_receipt",
+      "review_surface": "main#76 catalog companion",
+      "note": "Machine catalog/execution companion JSON; not a mathematical proof payload",
+      "bytes": 7225,
+      "sha256": "7cd54728a86a4717bec995b473466ae8fe031690048f78a9859d076fa39b7f7d",
+      "kind": "json"
+    }
+  ]
+}

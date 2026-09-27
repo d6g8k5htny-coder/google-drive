@@ -1,0 +1,20 @@
+{
+  "bytes": 17734,
+  "mathematical_source": {
+    "bytes": 17734,
+    "commit": "9b5fb7fa0ce3271afb4168dbada4893a53eaf307",
+    "key": "lifetime-remainder",
+    "path": "frontiers/three_fronts_20260924/LIFETIME_REMAINDER.md",
+    "repository": "Math-",
+    "scope": "Author-side bounded unrestricted lifetime remainder; parent marked Kac-Rice and cap interfaces remain under review",
+    "sha256": "380b7d0abdb0fe2de5a6564565af9560d3f1b1ce22fd5538927db0c52f4f3a4a",
+    "visibility": "public"
+  },
+  "meaning": "one selected public raw-file replica, not complete Drive synchronization or scientific status",
+  "no_private_sources": true,
+  "replica_path": "replicas/lifetime-remainder-v1/LIFETIME_REMAINDER.md",
+  "schema_version": 1,
+  "sha256": "380b7d0abdb0fe2de5a6564565af9560d3f1b1ce22fd5538927db0c52f4f3a4a",
+  "source_drive_id": "1xWGvtYUbG8FGVnGi_0-nX1asCOtqQLi7",
+  "source_visibility_observed": "anyone-with-link reader; no sharing change"
+}

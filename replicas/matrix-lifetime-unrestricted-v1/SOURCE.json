@@ -1,0 +1,19 @@
+{
+  "bytes": 40261,
+  "mathematical_source": {
+    "bytes": 40261,
+    "carrier": "drive-primary",
+    "key": "uniform-matrix-cap-lifetime",
+    "review_surface": "main#63",
+    "scope": "Author-side RATE-03/04 and qualitative LAW-03/04 plus unrestricted leading-law extension; not on Math- default branch; no numerical C/r_* or RN/24-jet discharge",
+    "sha256": "9350ad6eaba6626b93c3dedeef9e2ff816e5cdf1c8318e85fb27499141c84bc7",
+    "visibility": "public"
+  },
+  "meaning": "one selected public raw-file replica, not complete Drive synchronization or scientific status",
+  "no_private_sources": true,
+  "replica_path": "replicas/matrix-lifetime-unrestricted-v1/PROOF.md",
+  "schema_version": 1,
+  "sha256": "9350ad6eaba6626b93c3dedeef9e2ff816e5cdf1c8318e85fb27499141c84bc7",
+  "source_drive_id": "1foDgiDi4XIKOfbrZEE8dWKV_BkZU8LIb",
+  "source_visibility_observed": "anyone-with-link reader; no sharing change"
+}

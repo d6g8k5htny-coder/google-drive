@@ -1,0 +1,20 @@
+{
+  "bytes": 11467,
+  "mathematical_source": {
+    "bytes": 11467,
+    "commit": "9b5fb7fa0ce3271afb4168dbada4893a53eaf307",
+    "key": "p15-realized-covers",
+    "path": "frontiers/three_fronts_20260924/P15_REALIZED_COVERS.md",
+    "repository": "Math-",
+    "scope": "Specified original-coordinate family and nonempty covers, c<=p; not arbitrary P15 input or prize closure",
+    "sha256": "c0dbb821fb57b685a20cc321e4074456f39a9697f3104afd1f728e4732179bb9",
+    "visibility": "public"
+  },
+  "meaning": "one selected public raw-file replica, not complete Drive synchronization or scientific status",
+  "no_private_sources": true,
+  "replica_path": "replicas/p15-realized-covers-v1/P15_REALIZED_COVERS.md",
+  "schema_version": 1,
+  "sha256": "c0dbb821fb57b685a20cc321e4074456f39a9697f3104afd1f728e4732179bb9",
+  "source_drive_id": "1Fd0o_UzCxpWki08b04e2SeQH-a2BlRtk",
+  "source_visibility_observed": "anyone-with-link reader; no sharing change"
+}

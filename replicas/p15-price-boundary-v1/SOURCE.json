@@ -1,0 +1,20 @@
+{
+  "bytes": 2266,
+  "mathematical_source": {
+    "bytes": 2266,
+    "commit": "9b5fb7fa0ce3271afb4168dbada4893a53eaf307",
+    "key": "p15-price-boundary",
+    "path": "frontiers/three_fronts_20260924/P15_PRICE_BOUNDARY.md",
+    "repository": "Math-",
+    "scope": "Exact counterexample to the unrestricted same-palette transformed-price extension",
+    "sha256": "498af650ef7139c39d2630561dbfd0822c495ce6308a6cac8b767aefe0c2a40b",
+    "visibility": "public"
+  },
+  "meaning": "one selected public raw-file replica, not complete Drive synchronization or scientific status",
+  "no_private_sources": true,
+  "replica_path": "replicas/p15-price-boundary-v1/P15_PRICE_BOUNDARY.md",
+  "schema_version": 1,
+  "sha256": "498af650ef7139c39d2630561dbfd0822c495ce6308a6cac8b767aefe0c2a40b",
+  "source_drive_id": "1i9eByN8jv97CYhZ4I0aEUr0XDmfCPrfi",
+  "source_visibility_observed": "anyone-with-link reader; no sharing change"
+}
