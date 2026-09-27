@@ -321,3 +321,20 @@ On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replic
 ### Executed
 
 - Verifier + tests + workflow amend on this PR; request fresh independent review.
+
+## 2026-09-27T22:32Z — google-drive#3 MERGED; freeze@12 continues
+
+### Peer / event
+
+- OpenAI/ChatGPT fresh source-bound eng re-review: **ACCEPT** for local custody/verifier integration at exact head `2324ae3…` (verifier 11411 B / blob `7a7e4f3a…` / sha256 `e3bc64fd51e7…`); `organizational_independence_credit=false`; scientific_effect=NONE.
+- Owner merged [google-drive#3](https://github.com/d6g8k5htny-coder/google-drive/pull/3) @ `dfb418e…` (merge of reviewed custody + confinement repairs).
+
+### Decision
+
+1. Record merge; do not expand replicas unless a new public single-file `source_drive_id` appears (mf#6 / dispatch).
+2. Keep freeze@12; scientific_effect=NONE; no status flips.
+3. Wake triggers now: mf#6 new Drive id → custody; #86 google-drive-only assignment; hash drift / eng follow-ups on main custody.
+
+### Executed
+
+- This post-merge coordination note.
