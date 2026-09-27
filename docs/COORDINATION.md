@@ -284,3 +284,23 @@ On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replic
 ### Executed
 
 - Updated `docs/reviews/governance-pr4-ACCEPT.md` merge note; this log.
+
+## 2026-09-27T01:05Z — gd#3 eng HOLD/AMEND; verifier boundary repair
+
+### Peer / event
+
+- Owner-requested OpenAI/ChatGPT merge audit on [google-drive#3](https://github.com/d6g8k5htny-coder/google-drive/pull/3): engineering **HOLD / AMEND_REQUIRED** at `e7a3c01…`.
+- Findings (synthetic probes only; not claiming private material in the 12 replicas):
+  1. **P1** — `replica_path` not confined (parent / absolute / symlink escapes returned 0).
+  2. **P2** — missing `INDEX.json` / `EXCLUDED.json` silently skipped checks.
+
+### Decision
+
+1. Repair verifier boundary now; keep freeze@12 and scientific_effect=NONE.
+2. Require manifests; add negative controls matching the three escape paths + missing manifests + wrong-hash.
+3. Do not self-merge; successor needs independent re-review after CI green.
+
+### Executed
+
+- `scripts/verify_replicas.py` confinement + required manifests.
+- `scripts/test_verify_replicas.py` negative controls expanded.

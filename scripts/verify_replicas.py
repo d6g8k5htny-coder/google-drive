@@ -2,8 +2,9 @@
 """Verify selected google-drive replicas against SOURCE.json and optional live Drive.
 
 Scientific effect: NONE. A hash match is not theorem acceptance or currentness.
-Does not change Drive sharing. Refuses private/sandbox paths by construction
-(only walks replicas/*/SOURCE.json in this repository).
+Does not change Drive sharing. Confines each SOURCE replica_path to that SOURCE's
+replica directory under replicas/ (rejects absolute, parent-relative, and
+symlink-escaping paths). Requires replicas/INDEX.json and replicas/EXCLUDED.json.
 
 Usage:
   python3 scripts/verify_replicas.py              # local SOURCE vs replica bytes
@@ -14,6 +15,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import sys
 import urllib.request
 from pathlib import Path
@@ -43,7 +45,64 @@ def load_source(path: Path) -> dict:
         raise ValueError(f"{path}: empty source_drive_id")
     if not isinstance(data["sha256"], str) or len(data["sha256"]) != 64:
         raise ValueError(f"{path}: invalid sha256")
+    if not isinstance(data["replica_path"], str) or not data["replica_path"]:
+        raise ValueError(f"{path}: empty replica_path")
     return data
+
+
+def resolve_confined_replica(
+    source_path: Path, replica_path_field: str, *, root: Path = ROOT
+) -> Path:
+    """Resolve SOURCE replica_path strictly inside that SOURCE's replica directory.
+
+    Rejects absolute paths, parent-relative segments, and symlink escapes that
+    resolve outside the intended replicas/<folder>/ directory.
+    """
+    folder = source_path.parent.name
+    intended_lexical = Path(os.path.normpath(str(root / "replicas" / folder)))
+    intended_resolved = intended_lexical.resolve(strict=False)
+    raw = replica_path_field
+    candidate = Path(raw)
+    if candidate.is_absolute():
+        raise ValueError(
+            f"{source_path.parent.name}: replica_path must be relative, got absolute {raw!r}"
+        )
+    if ".." in candidate.parts:
+        raise ValueError(
+            f"{source_path.parent.name}: replica_path must not contain '..': {raw!r}"
+        )
+    # Lexical join only (no symlink follow) so the declared path must sit under
+    # replicas/<folder>/ before any filesystem resolution.
+    lexical = Path(os.path.normpath(str(root / candidate)))
+    try:
+        lexical.relative_to(intended_lexical)
+    except ValueError as exc:
+        raise ValueError(
+            f"{source_path.parent.name}: replica_path {raw!r} escapes "
+            f"replicas/{folder}/"
+        ) from exc
+    if not lexical.exists():
+        raise FileNotFoundError(
+            f"{source_path.parent.name}: missing confined replica {raw}"
+        )
+    if not lexical.is_file() and not lexical.is_symlink():
+        raise FileNotFoundError(
+            f"{source_path.parent.name}: replica_path {raw!r} is not a file"
+        )
+    # Follow symlinks only after lexical confinement; reject targets outside.
+    resolved = lexical.resolve(strict=True)
+    if not resolved.is_file():
+        raise FileNotFoundError(
+            f"{source_path.parent.name}: missing confined replica {raw}"
+        )
+    try:
+        resolved.relative_to(intended_resolved)
+    except ValueError as exc:
+        raise ValueError(
+            f"{source_path.parent.name}: replica_path {raw!r} resolves outside "
+            f"replicas/{folder}/ via symlink or mount"
+        ) from exc
+    return resolved
 
 
 def fetch_drive(file_id: str) -> bytes:
@@ -71,12 +130,22 @@ def main() -> int:
         print("FAIL: no replicas/*/SOURCE.json found", file=sys.stderr)
         return 1
 
+    excluded_path = REPLICAS / "EXCLUDED.json"
+    index_path = REPLICAS / "INDEX.json"
+    if not excluded_path.is_file():
+        print("FAIL: missing required replicas/EXCLUDED.json")
+        return 1
+    if not index_path.is_file():
+        print("FAIL: missing required replicas/INDEX.json")
+        return 1
+
     checked = []
     for source_path in sources:
-        src = load_source(source_path)
-        replica = ROOT / src["replica_path"]
-        if not replica.is_file():
-            print(f"FAIL {source_path.parent.name}: missing {src['replica_path']}")
+        try:
+            src = load_source(source_path)
+            replica = resolve_confined_replica(source_path, src["replica_path"])
+        except (ValueError, FileNotFoundError, OSError) as exc:
+            print(f"FAIL {source_path.parent.name}: {exc}")
             return 1
         raw = replica.read_bytes()
         digest = hashlib.sha256(raw).hexdigest()
@@ -102,41 +171,36 @@ def main() -> int:
             + (" (live match)" if args.live_drive else " (local only)")
         )
 
-
-    excluded_path = REPLICAS / "EXCLUDED.json"
-    if excluded_path.is_file():
-        excluded = json.loads(excluded_path.read_text(encoding="utf-8"))
-        if excluded.get("scientific_status_authority") is not False:
-            print("FAIL EXCLUDED.json: scientific_status_authority must be false")
+    excluded = json.loads(excluded_path.read_text(encoding="utf-8"))
+    if excluded.get("scientific_status_authority") is not False:
+        print("FAIL EXCLUDED.json: scientific_status_authority must be false")
+        return 1
+    selected_ids = set()
+    for folder in checked:
+        src = json.loads((REPLICAS / folder / "SOURCE.json").read_text(encoding="utf-8"))
+        selected_ids.add(src["source_drive_id"])
+    for row in excluded.get("excluded", []):
+        fid = row.get("source_drive_id")
+        if fid in selected_ids:
+            print(f"FAIL EXCLUDED.json lists selected Drive id {fid}")
             return 1
-        selected_ids = set()
-        for folder in checked:
-            src = json.loads((REPLICAS / folder / "SOURCE.json").read_text(encoding="utf-8"))
-            selected_ids.add(src["source_drive_id"])
-        for row in excluded.get("excluded", []):
-            fid = row.get("source_drive_id")
-            if fid in selected_ids:
-                print(f"FAIL EXCLUDED.json lists selected Drive id {fid}")
+    print(f"PASS EXCLUDED.json ({len(excluded.get('excluded', []))} non-selected Drive ids)")
+
+    index = json.loads(index_path.read_text(encoding="utf-8"))
+    if index.get("scientific_status_authority") is not False:
+        print("FAIL INDEX.json: scientific_status_authority must be false")
+        return 1
+    indexed = {row.get("folder") for row in index.get("replicas", [])}
+    if indexed != set(checked):
+        print(f"FAIL INDEX.json folders {sorted(indexed)} != verified {sorted(checked)}")
+        return 1
+    for row in index["replicas"]:
+        src = json.loads((REPLICAS / row["folder"] / "SOURCE.json").read_text(encoding="utf-8"))
+        for field in ("bytes", "sha256", "source_drive_id", "replica_path"):
+            if row.get(field) != src.get(field):
+                print(f"FAIL INDEX.json {row['folder']}.{field} != SOURCE.json")
                 return 1
-        print(f"PASS EXCLUDED.json ({len(excluded.get('excluded', []))} non-selected Drive ids)")
-
-    index_path = REPLICAS / "INDEX.json"
-    if index_path.is_file():
-        index = json.loads(index_path.read_text(encoding="utf-8"))
-        if index.get("scientific_status_authority") is not False:
-            print("FAIL INDEX.json: scientific_status_authority must be false")
-            return 1
-        indexed = {row.get("folder") for row in index.get("replicas", [])}
-        if indexed != set(checked):
-            print(f"FAIL INDEX.json folders {sorted(indexed)} != verified {sorted(checked)}")
-            return 1
-        for row in index["replicas"]:
-            src = json.loads((REPLICAS / row["folder"] / "SOURCE.json").read_text(encoding="utf-8"))
-            for field in ("bytes", "sha256", "source_drive_id", "replica_path"):
-                if row.get(field) != src.get(field):
-                    print(f"FAIL INDEX.json {row['folder']}.{field} != SOURCE.json")
-                    return 1
-        print(f"PASS INDEX.json consistent with {len(checked)} SOURCE records")
+    print(f"PASS INDEX.json consistent with {len(checked)} SOURCE records")
 
     print(
         f"verified={len(checked)} meaning=exact bytes only; "
