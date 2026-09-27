@@ -24,15 +24,15 @@
       "side24-coefficient-proof-drive-replica"
     ],
     "preferred_long_term_custody": "google-drive replicas/* with SOURCE.json; catalog repository field may retarget from meta-framework interim copies after both PRs merge",
-    "peer_pr_ready_for_review": true,
-    "peer_updated_observed": "2026-09-25T20:52Z",
-    "peer_note": "mf#6 still interim catalog + non-Drive downstream-gate-pr15-v1; no new source_drive_id since freeze@12",
+    "peer_pr_ready_for_review": false,
+    "peer_updated_observed": "2026-09-27T23:36Z",
+    "peer_note": "meta-framework#6 MERGED @ d049f3aa…; merged main still 8 SOURCE files, 4 Drive overlaps already in freeze@12, NEW source_drive_id=NONE",
     "replica_freeze": 12,
     "coordination_log": "docs/COORDINATION.md",
     "dispatch": "https://github.com/d6g8k5htny-coder/main/issues/86",
     "preferred_merge_order": [
-      "google-drive#3",
-      "meta-framework#6"
+      "google-drive#3 MERGED dfb418e…",
+      "meta-framework#6 MERGED d049f3aa…"
     ]
   },
   "replicas": [

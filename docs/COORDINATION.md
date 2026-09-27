@@ -338,3 +338,20 @@ On timer/wake: re-read #86 + open peer PRs; if PR3 merged, stop expanding replic
 ### Executed
 
 - This post-merge coordination note.
+
+## 2026-09-27T23:36Z — meta-framework#6 MERGED; freeze@12 unchanged
+
+### Peer / event
+
+- [meta-framework#6](https://github.com/d6g8k5htny-coder/meta-framework/pull/6) **MERGED** @ `d049f3aa…`.
+- Post-merge `main` tree: 8 `SOURCE.json` files; 4 Drive ids all already in freeze@12; **NEW `source_drive_id`=NONE**.
+
+### Decision
+
+1. No custody expansion; freeze@12 stands; scientific_effect=NONE.
+2. Preferred merge order complete (google-drive#3 then mf#6).
+3. Wake triggers now: new public single-file Drive id on meta-framework main / dispatch; #86 google-drive-only assignment; custody hash drift.
+
+### Executed
+
+- INDEX peer_coordination updated; this log.
