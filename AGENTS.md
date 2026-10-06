@@ -5,6 +5,8 @@
 > re-arm timers. Exit without writing. Resume only on a new explicit
 > instruction from Dylan. See [OWNER_STOP.md](OWNER_STOP.md).**
 
+> **Update 2026-10-06:** the 27 September stop [no longer applies](https://github.com/d6g8k5htny-coder/main/blob/main/governance/OWNER_DECISION_20261005_CURSOR.md) (owner decision, 5 October); Cursor agents work on request. Under [main#227](https://github.com/d6g8k5htny-coder/main/issues/227) this repository stays public and becomes a read-only archive; see the README's dated note. No new replicas.
+
 Selected public Drive replicas with exact source custody. Not an automatic full-Drive mirror.
 
 ## Always
